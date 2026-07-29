@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#090b16" />
+  <meta name="description" content="MNAnimat3D — modelagem, rig, cenários e animação 3D para Windows e Android." />
+  <title>MNAnimat3D v1.0.0 — Studio</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./src/features-v2.css?v=460" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./lib/three/three.module.js",
+        "three/addons/": "./lib/three/addons/"
+      }
+    }
+  </script>
+  
+  <link id="mn-features-v3-css" rel="stylesheet" href="./src/features-v3.css?v=100" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <div class="brand" aria-label="MNAnimat3D">
+        <img class="brand-logo" src="./src/assets/images/regenerated_image_1785264083389.webp" alt="MNAnimat3D Logo" />
+        <span class="brand-copy"><strong>MNAnimat3D</strong><small>STUDIO</small></span>
+      </div>
+
+      <nav class="main-menu" aria-label="Menu principal">
+        <button class="menu-button" data-menu="file">Arquivo</button>
+        <button class="menu-button" data-menu="edit">Editar</button>
+        <button class="menu-button" data-menu="create">Criar</button>
+        <button class="menu-button" data-menu="animate">Animar</button>
+      </nav>
+
+      <div class="top-actions">
+        <span id="save-status" class="save-status"><i></i> Projeto local</span>
+        <button id="theme-toggle-btn" class="icon-button" title="Alternar tom Claro / Escuro" aria-label="Alternar tom"><span data-icon="sun"></span></button>
+        <button id="undo-btn" class="icon-button" title="Desfazer (Ctrl+Z)" aria-label="Desfazer"></button>
+        <button id="redo-btn" class="icon-button" title="Refazer (Ctrl+Y)" aria-label="Refazer"></button>
+        <button id="render-btn" class="primary-button"><span class="button-icon" data-icon="sparkles"></span>Renderizar</button>
+      </div>
+    </header>
+
+    <aside class="left-panel panel">
+      <div class="panel-tabs" role="tablist">
+        <button class="panel-tab active" data-tab="create-panel">Criar</button>
+        <button class="panel-tab" data-tab="scene-panel">Cena</button>
+        <button class="panel-tab" data-tab="assets-panel">Assets</button>
+      </div>
+
+      <section id="create-panel" class="panel-content active">
+        <div class="section-heading"><span>Formas básicas</span><small>Arraste e edite</small></div>
+        <div class="primitive-grid">
+          <button class="asset-card" data-add="box"><span class="shape-icon cube"></span><span>Cubo</span><kbd>1</kbd></button>
+          <button class="asset-card" data-add="sphere"><span class="shape-icon sphere"></span><span>Esfera</span><kbd>2</kbd></button>
+          <button class="asset-card" data-add="cylinder"><span class="shape-icon cylinder"></span><span>Cilindro</span><kbd>3</kbd></button>
+          <button class="asset-card" data-add="plane"><span class="shape-icon plane"></span><span>Plano</span><kbd>4</kbd></button>
+          <button class="asset-card" data-add="cone"><span class="shape-icon cone"></span><span>Cone</span><kbd>5</kbd></button>
+          <button class="asset-card" data-add="torus"><span class="shape-icon torus"></span><span>Toro</span><kbd>6</kbd></button>
+        </div>
+
+        <div class="section-heading spaced"><span>Personagem e efeitos</span><small>Prontos para animar</small></div>
+        <div class="feature-list">
+          <button class="feature-card" id="add-rig-btn">
+            <span class="feature-icon violet" data-icon="person"></span>
+            <span><strong>Ator articulado</strong><small>18 controles de pose</small></span>
+            <span class="add-badge">+</span>
+          </button>
+          <button class="feature-card" data-weather="rain">
+            <span class="feature-icon cyan" data-icon="rain"></span>
+            <span><strong>Chuva procedural</strong><small>Partículas em tempo real</small></span>
+            <span class="add-badge">+</span>
+          </button>
+          <button class="feature-card" data-weather="snow">
+            <span class="feature-icon pink" data-icon="snow"></span>
+            <span><strong>Neve procedural</strong><small>Queda e turbulência</small></span>
+            <span class="add-badge">+</span>
+          </button>
+        </div>
+
+        <div class="section-heading spaced"><span>Música & Efeito Sonoro</span><small>Sincronizado com a cena</small></div>
+        <div class="feature-list">
+          <button class="feature-card" id="import-audio-btn">
+            <span class="feature-icon violet" data-icon="audio"></span>
+            <span><strong>Importar áudio ou música</strong><small>MP3, WAV, OGG, M4A, AAC</small></span>
+            <span class="add-badge">+</span>
+          </button>
+          <input id="audio-file-input" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac" hidden />
+        </div>
+        <div id="audio-tracks-list" style="margin-top:8px;display:flex;flex-direction:column;gap:6px;"></div>
+      </section>
+
+      <section id="scene-panel" class="panel-content">
+        <div class="search-box"><span data-icon="search"></span><input id="scene-search" type="search" placeholder="Buscar na cena" /></div>
+        <div id="scene-tree" class="scene-tree" aria-label="Hierarquia da cena"></div>
+      </section>
+
+      <section id="assets-panel" class="panel-content">
+        <div class="section-heading"><span>Personagens incluídas</span><small>CC BY + CC0</small></div>
+        <div class="character-library">
+          <article class="character-card blocky-card">
+            <div class="character-portrait"><span>MN</span><i>CC0</i></div>
+            <div class="character-info">
+              <div><strong>Personagem blocada</strong><em>Kenney</em></div>
+              <small>7 controles · 27 animações</small>
+              <div class="character-actions">
+                <button class="character-load" data-character-preset="blocky">Carregar</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <div id="viewport" class="viewport"></div>
+
+      <nav class="floating-panel viewport-toolbar" aria-label="Ferramentas de transformação">
+        <button class="tool-button active" data-tool="select" title="Seleção (Q)" aria-label="Seleção"><span data-icon="cursor"></span></button>
+        <button class="tool-button" data-tool="translate" title="Mover (W)" aria-label="Mover"><span data-icon="move"></span></button>
+        <button class="tool-button" data-tool="rotate" title="Girar (E)" aria-label="Girar"><span data-icon="rotate"></span></button>
+        <button class="tool-button" data-tool="scale" title="Escalar (R)" aria-label="Escalar"><span data-icon="scale"></span></button>
+        <div class="toolbar-divider"></div>
+        <button id="space-toggle" class="view-chip" title="Alternar Espaço (Local/Global)"><span data-icon="globe"></span><span id="space-label">Global</span></button>
+        <button id="snap-toggle" class="view-chip" title="Ajuste à Grade (Snap)"><span data-icon="grid"></span><span>Snap</span></button>
+      </nav>
+
+      <div class="floating-panel view-toolbar">
+        <button id="camera-reset" class="view-chip" title="Resetar Câmera"><span data-icon="home"></span><span>Reset</span></button>
+        <button id="shading-toggle" class="view-chip" title="Modo de Sombreamento"><span data-icon="sun"></span><span id="shading-label">Sombreado</span></button>
+      </div>
+
+      <div id="selection-pill" class="selection-pill hidden">
+        <i></i><span id="selected-name">Nenhum objeto</span>
+      </div>
+
+      <div id="empty-hint" class="empty-hint">
+        <div class="hint-orbit"><span></span><i></i></div>
+        <strong>Cena 3D Vazia</strong>
+        <small>Adicione formas ou um personagem para começar</small>
+      </div>
+    </main>
+
+    <aside class="right-panel panel">
+      <div class="inspector-header">
+        <div>
+          <small>INSPETOR DE PROPRIEDADES</small>
+          <strong id="inspector-title">Nenhuma seleção</strong>
+        </div>
+      </div>
+
+      <div id="inspector-empty" class="inspector-empty">
+        <span data-icon="cube"></span>
+        <strong>Nenhum objeto selecionado</strong>
+        <small>Selecione um elemento para editar suas propriedades</small>
+      </div>
+
+      <div id="inspector-content" class="inspector-content hidden">
+        <section id="transform-section" class="property-section open">
+          <button class="property-title"><span><i data-icon="move"></i>Transformação</span><b>⌃</b></button>
+          <div class="property-body">
+            <div class="vector-row">
+              <label>Posição</label>
+              <div>
+                <span class="axis-label x">X</span><input id="pos-x" type="number" step="0.1" value="0">
+                <span class="axis-label y">Y</span><input id="pos-y" type="number" step="0.1" value="0">
+                <span class="axis-label z">Z</span><input id="pos-z" type="number" step="0.1" value="0">
+              </div>
+            </div>
+            <div class="vector-row">
+              <label>Rotação (°)</label>
+              <div>
+                <span class="axis-label x">X</span><input id="rot-x" type="number" step="1" value="0">
+                <span class="axis-label y">Y</span><input id="rot-y" type="number" step="1" value="0">
+                <span class="axis-label z">Z</span><input id="rot-z" type="number" step="1" value="0">
+              </div>
+            </div>
+            <div class="vector-row">
+              <label>Escala</label>
+              <div>
+                <span class="axis-label x">X</span><input id="scale-x" type="number" step="0.1" value="1">
+                <span class="axis-label y">Y</span><input id="scale-y" type="number" step="0.1" value="1">
+                <span class="axis-label z">Z</span><input id="scale-z" type="number" step="0.1" value="1">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="geometry-section" class="property-section open">
+          <button class="property-title"><span><i data-icon="cube"></i>Geometria</span><b>⌃</b></button>
+          <div class="property-body geometry-fields" id="geometry-fields"></div>
+        </section>
+
+        <section id="material-section" class="property-section open">
+          <button class="property-title"><span><i data-icon="material"></i>Material</span><b>⌃</b></button>
+          <div class="property-body material-fields">
+            <div class="wide-field"><label>Cor base</label><div class="color-control"><input id="material-color" type="color" value="#7c5cff"><input id="material-hex" type="text" value="#7C5CFF" maxlength="7"></div></div>
+            <div class="range-field"><label>Metálico <output id="metalness-value">0.1</output></label><input id="material-metalness" type="range" min="0" max="1" value="0.1" step="0.05"></div>
+            <div class="range-field"><label>Rugosidade <output id="roughness-value">0.55</output></label><input id="material-roughness" type="range" min="0" max="1" value="0.55" step="0.05"></div>
+          </div>
+        </section>
+
+        <section id="rig-section" class="property-section open hidden">
+          <button class="property-title"><span><i data-icon="person"></i>Assistente de pose</span><b>⌃</b></button>
+          <div class="property-body">
+            <p class="helper-copy">Gire esta articulação e registre a pose. O suavizador cria transições mais naturais entre poses-chave.</p>
+            <button id="mirror-pose-btn" class="secondary-button full">Espelhar pose</button>
+          </div>
+        </section>
+      </div>
+    </aside>
+
+    <section class="timeline-panel panel">
+      <div class="timeline-head">
+        <div class="timeline-title"><span data-icon="timeline"></span><strong>Linha do tempo</strong><small id="take-label">TAKE 01</small></div>
+        <div class="transport">
+          <button id="first-frame" class="transport-btn" aria-label="Primeiro frame"><span data-icon="first"></span></button>
+          <button id="prev-key" class="transport-btn" aria-label="Keyframe anterior"><span data-icon="prev"></span></button>
+          <button id="play-btn" class="play-btn" aria-label="Reproduzir"><span data-icon="play"></span></button>
+          <button id="next-key" class="transport-btn" aria-label="Próximo keyframe"><span data-icon="next"></span></button>
+          <button id="last-frame" class="transport-btn" aria-label="Último frame"><span data-icon="last"></span></button>
+        </div>
+        <div class="timeline-settings">
+          <label class="auto-key"><input id="auto-key" type="checkbox"><span></span>Auto key</label>
+          <label class="frame-input"><input id="current-frame" type="number" min="0" max="240" value="0"><small>/ 240</small></label>
+          <label class="fps-input"><select id="fps-select"><option>24</option><option selected>30</option><option>60</option></select><small>FPS</small></label>
+        </div>
+      </div>
+      <div class="timeline-body">
+        <div class="track-labels">
+          <div class="track-main"><span class="disclosure">⌄</span><i></i><span id="track-object-name">Objeto selecionado</span></div>
+          <div><span class="track-dot position"></span>Posição</div>
+          <div><span class="track-dot rotation"></span>Rotação</div>
+          <div><span class="track-dot scale"></span>Escala</div>
+        </div>
+        <div id="timeline-ruler" class="timeline-ruler">
+          <div id="ruler-labels" class="ruler-labels"></div>
+          <div class="track-row main-track" data-track="all"></div>
+          <div class="track-row" data-track="position"></div>
+          <div class="track-row" data-track="rotation"></div>
+          <div class="track-row" data-track="scale"></div>
+          <div id="playhead" class="playhead"><span></span></div>
+        </div>
+        <div class="timeline-actions">
+          <button id="add-key-btn" class="key-button"><span data-icon="diamond"></span>Registrar pose <kbd>K</kbd></button>
+          <button id="delete-key-btn" class="subtle-button">Remover key</button>
+          <label class="smooth-toggle"><input id="smooth-motion" type="checkbox" checked><span></span>Movimento suave</label>
+        </div>
+      </div>
+    </section>
+
+    <nav class="mobile-dock" aria-label="Painéis mobile">
+      <button data-mobile-panel="left" class="active"><span data-icon="plus"></span><small>Criar</small></button>
+      <button data-mobile-tool="translate"><span data-icon="move"></span><small>Mover</small></button>
+      <button data-mobile-tool="rotate"><span data-icon="rotate"></span><small>Girar</small></button>
+      <button data-mobile-panel="timeline"><span data-icon="timeline"></span><small>Animar</small></button>
+      <button data-mobile-panel="right"><span data-icon="sliders"></span><small>Editar</small></button>
+    </nav>
+  </div>
+
+  <div id="menu-popover" class="menu-popover hidden"></div>
+  <div id="render-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="render-title">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Fechar">×</button>
+      <div class="modal-icon" data-icon="sparkles"></div>
+      <h2 id="render-title">Exportar sua criação</h2>
+      <p>Escolha o formato final. A cena e a animação permanecem totalmente locais.</p>
+      <div class="render-resolution">
+        <label>Resolução</label>
+        <select id="render-resolution">
+          <option value="1280x720">HD · 1280 × 720</option>
+          <option value="1920x1080" selected>Full HD · 1920 × 1080</option>
+          <option value="3840x2160">4K · 3840 × 2160 (Ultra HD)</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;background:rgba(255,255,255,0.05);padding:8px 10px;border-radius:8px;border:1px solid var(--line);">
+        <input type="checkbox" id="render-hide-helpers" checked style="accent-color:var(--violet);width:16px;height:16px;cursor:pointer;">
+        <label for="render-hide-helpers" style="font-size:11px;font-weight:600;cursor:pointer;color:var(--text)">Não mostrar controladores e gizmos na renderização</label>
+      </div>
+      <div class="export-grid">
+        <button id="export-image"><span data-icon="image"></span><strong>Imagem PNG</strong><small>Frame atual em alta qualidade</small></button>
+        <button id="export-video-mp4"><span data-icon="video"></span><strong>Animação MP4 (4K / HD)</strong><small>Formato MP4 universal com áudio</small></button>
+        <button id="export-video"><span data-icon="video"></span><strong>Animação WebM</strong><small>Formato WebM com áudio</small></button>
+        <button id="export-glb"><span data-icon="cube"></span><strong>Modelo GLB</strong><small>Geometria, rig e keyframes</small></button>
+        <button id="export-obj"><span data-icon="wireframe"></span><strong>Modelo OBJ</strong><small>Geometria estática universal</small></button>
+      </div>
+      <div id="render-progress" class="render-progress hidden"><div><span></span></div><small>Preparando render...</small></div>
+    </div>
+  </div>
+
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <input id="file-input" type="file" accept=".zip,.blend,.fbx,.glb,.gltf,.obj,application/zip,application/x-zip-compressed,model/gltf-binary,model/gltf+json,application/octet-stream" hidden />
+  <input id="project-input" type="file" accept=".zip,.blend,.fbx,.glb,.gltf,.obj,application/zip,application/x-zip-compressed,application/octet-stream" hidden />
+
+  <script type="module" src="./src/v3-bootstrap.js?v=100"></script>
+</body>
+</html>

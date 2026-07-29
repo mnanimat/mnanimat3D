@@ -1,0 +1,14 @@
+{
+  "name": "mnanimat3d",
+  "version": "3.2.0",
+  "description": "MNAnimat3D Studio - 3D modeling, rigging, scenes and animation",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'Build complete'",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
