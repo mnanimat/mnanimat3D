@@ -6,7 +6,8 @@
     "dev": "vite --port 3000 --host",
     "build": "vite build",
     "preview": "vite preview --port 3000 --host",
-    "pages:build": "vite build"
+    "pages:build": "vite build",
+    "deploy": "npm run build && wrangler deploy"
   },
   "engines": {
     "node": ">=18.0.0"
