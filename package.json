@@ -1,14 +1,23 @@
 {
-  "name": "mnanimat3d",
-  "version": "3.2.0",
-  "description": "MNAnimat3D Studio - 3D modeling, rigging, scenes and animation",
+  "name": "mnanimat3d-studio",
+  "version": "3.5.0",
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
-    "build": "echo 'Build complete'",
-    "start": "node server.js"
+    "dev": "vite --port 3000 --host",
+    "build": "vite build",
+    "preview": "vite preview --port 3000 --host",
+    "pages:build": "vite build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "canvas-confetti": "^1.9.4",
+    "lucide-react": "^1.27.0",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.185.1",
+    "vite": "^8.1.5"
   }
 }

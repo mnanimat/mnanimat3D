@@ -1,0 +1,8 @@
+# Cloudflare Pages Configuration File
+name = "mnanimat3d-studio"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-01-01"
+
+[build]
+command = "npm run build"
+output_dir = "dist"
