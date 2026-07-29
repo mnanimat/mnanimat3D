@@ -1,10 +1,9 @@
-# Cloudflare Workers Assets / Cloudflare Pages Configuration
+# Cloudflare Workers Assets Configuration
 name = "mnanimat3dweb"
 compatibility_date = "2026-01-01"
 
 [assets]
 directory = "./dist"
-html_handling = "none"
 not_found_handling = "single-page-application"
 
 [build]
