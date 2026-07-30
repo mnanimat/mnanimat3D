@@ -733,12 +733,14 @@ function markSaved() {
 }
 
 function updateDynamicFavicon() {
-  const favicon = document.querySelector('#mn-favicon') || document.querySelector('link[rel="icon"]');
-  if (!favicon) return;
+  const favicons = document.querySelectorAll('#mn-favicon, link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]');
+  const brandLogos = document.querySelectorAll('#brand-logo-img, .brand-logo');
+  const defaultLogo = './src/assets/images/regenerated_image_1785264083389.webp';
 
   const selected = engine.selected;
   if (!selected) {
-    favicon.href = './src/assets/images/regenerated_image_1785264083389.webp';
+    favicons.forEach(el => el.href = defaultLogo);
+    brandLogos.forEach(img => img.src = defaultLogo);
     return;
   }
 
@@ -749,23 +751,27 @@ function updateDynamicFavicon() {
     const ctx = canvas.getContext('2d');
 
     // Background pill
-    ctx.fillStyle = '#0f172a';
+    const grad = ctx.createLinearGradient(0, 0, 64, 64);
+    grad.addColorStop(0, '#0f172a');
+    grad.addColorStop(1, '#0284c7');
+    ctx.fillStyle = grad;
     ctx.beginPath();
-    ctx.roundRect(0, 0, 64, 64, 16);
+    ctx.roundRect(4, 4, 56, 56, 14);
     ctx.fill();
 
-    // Border
-    ctx.lineWidth = 4;
+    // Glowing cyan border
+    ctx.lineWidth = 3;
     ctx.strokeStyle = '#38bdf8';
     ctx.stroke();
 
-    // Determine icon emoji
+    // Determine icon emoji symbol
     let iconSymbol = '🧊';
     const name = (selected.name || '').toLowerCase();
+    const type = selected.type || '';
 
-    if (selected.isSkinnedMesh || name.includes('rig') || name.includes('ual') || name.includes('blocky') || name.includes('personagem')) {
+    if (selected.isBone || type.includes('Bone') || selected.isSkinnedMesh || name.includes('rig') || name.includes('ual') || name.includes('blocky') || name.includes('personagem') || name.includes('mannequin')) {
       iconSymbol = '👤';
-    } else if (name.includes('cenario') || name.includes('terreno') || name.includes('village') || name.includes('casa') || name.includes('megakit')) {
+    } else if (name.includes('cenario') || name.includes('terreno') || name.includes('village') || name.includes('casa') || name.includes('megakit') || name.includes('medieval')) {
       iconSymbol = '🏰';
     } else if (selected.isLight) {
       iconSymbol = '💡';
@@ -777,16 +783,24 @@ function updateDynamicFavicon() {
       iconSymbol = '🛢️';
     } else if (selected.geometry?.type?.includes('Plane')) {
       iconSymbol = '📐';
+    } else if (selected.geometry?.type?.includes('Torus')) {
+      iconSymbol = '🍩';
+    } else if (selected.geometry?.type?.includes('Cone')) {
+      iconSymbol = '🔺';
+    } else if (selected.isGroup || selected.children?.length > 0) {
+      iconSymbol = '📦';
     }
 
-    ctx.font = '34px sans-serif';
+    ctx.font = '32px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(iconSymbol, 32, 32);
+    ctx.fillText(iconSymbol, 32, 33);
 
-    favicon.href = canvas.toDataURL('image/png');
+    const iconDataUrl = canvas.toDataURL('image/png');
+    favicons.forEach(el => el.href = iconDataUrl);
+    brandLogos.forEach(img => img.src = iconDataUrl);
   } catch (e) {
-    console.warn('Favicon error:', e);
+    console.warn('Favicon/Logo update error:', e);
   }
 }
 
@@ -807,6 +821,7 @@ engine.addEventListener('notice', event => toast(event.detail.message, event.det
 updateTimelineLabels();
 refreshSceneTree();
 updateInspector();
+updateDynamicFavicon();
 setPlayIcon(false);
 setTool('select');
 loadFurnitureCatalog();
