@@ -104,21 +104,55 @@
       </section>
 
       <section id="assets-panel" class="panel-content">
-        <div class="section-heading"><span>Personagens incluídas</span><small>CC BY + CC0</small></div>
+        <div class="section-heading"><span>Personagens Incluídas & Rigs</span><small>CC0 1.0 Universal</small></div>
         <div class="character-library">
-          <article class="character-card blocky-card">
-            <div class="character-portrait"><span>MN</span><i>CC0</i></div>
+          <article class="character-card blocky-card" style="border:1px solid #334155;background:linear-gradient(145deg,#0f172a,#090d16);border-radius:12px;padding:12px;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+            <div class="character-portrait" style="height:54px;"><span>MN</span><i>CC0</i></div>
             <div class="character-info">
-              <div><strong>Personagem blocada</strong><em>Kenney</em></div>
-              <small>7 controles · 27 animações</small>
-              <div class="character-actions">
-                <button class="character-load" data-load-character="blocky" data-character-preset="blocky">Carregar Personagem Blocada</button>
+              <div><strong style="color:#f8fafc;font-size:13px;">Personagem blocada</strong><em style="color:#94a3b8;font-weight:600;">Kenney</em></div>
+              <small style="color:#cbd5e1;font-size:10px;margin-top:2px;">7 controles · 27 animações</small>
+              <div class="character-actions" style="margin-top:8px;">
+                <button class="character-load" data-load-character="blocky" data-character-preset="blocky" style="width:100%;min-height:36px;background:linear-gradient(135deg,#059669,#047857);color:#ffffff;font-weight:800;border:1px solid #34d399;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:11.5px;box-shadow:0 3px 10px rgba(16,185,129,0.3);text-align:center;line-height:1.3;white-space:normal;word-break:break-word;">Carregar Personagem Blocada</button>
               </div>
-              <select id="blocky-animation-select" class="character-animation" aria-label="Animação da personagem blocada" disabled style="width:100%;margin-top:6px;background:#0f172a;border:1px solid #334155;color:#f8fafc;padding:4px 8px;border-radius:6px;font-size:11px;">
+              <select id="blocky-animation-select" class="character-animation" aria-label="Animação da personagem blocada" disabled style="width:100%;margin-top:6px;background:#090d16;border:1px solid #334155;color:#f8fafc;padding:6px 8px;border-radius:6px;font-size:10.5px;min-height:30px;height:auto;">
                 <option>Carregue para escolher uma animação</option>
               </select>
             </div>
           </article>
+
+          <article class="character-card quaternius-rig-card" style="border:1px solid #0284c7;background:linear-gradient(145deg,#0f172a,#030712);border-radius:12px;padding:12px;margin-top:10px;box-shadow:0 4px 14px rgba(2,132,199,0.2);">
+            <div class="character-portrait" style="height:54px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff;border-radius:8px;display:grid;place-items:center;font-weight:800;box-shadow:0 0 12px rgba(2,132,199,0.4);">
+              <span>UA</span><i style="display:block;font-size:8px;opacity:0.9;">CC0</i>
+            </div>
+            <div class="character-info">
+              <div><strong style="color:#38bdf8;font-size:13px;">Quaternius Universal Rig</strong><em style="color:#94a3b8;font-weight:600;">Standard RM</em></div>
+              <small style="color:#cbd5e1;display:block;margin:2px 0 6px;font-size:10px;line-height:1.35;">CC0 · FBX texturizado · rig humanoide</small>
+              <div class="character-actions">
+                <button class="character-load" data-load-character="ual1-standard-rm" data-character-preset="ual1-standard-rm" style="width:100%;min-height:36px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff;font-weight:800;border:1px solid #38bdf8;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:11.5px;box-shadow:0 4px 12px rgba(2,132,199,0.3);text-align:center;line-height:1.3;white-space:normal;word-break:break-word;">Carregar Quaternius Rig</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-heading spaced" style="margin-top:20px;"><span>Quaternius & Pacotes ZIP 3D</span><small>Cenários e Personagens CC0</small></div>
+        <div style="background:#0f172a;border:1px solid #334155;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px;box-shadow:0 4px 14px rgba(0,0,0,0.2);">
+          <p style="font-size:11.5px;color:#f8fafc;margin:0;line-height:1.5;font-weight:500;">
+            Importe pacotes <strong>.ZIP</strong> contendo modelos 3D (.FBX, .GLTF, .GLB, .OBJ) e texturas diretamente para o projeto:
+          </p>
+          <button id="import-quaternius-zip-btn" type="button" onclick="document.querySelector('#file-input').click();" style="width:100%;min-height:44px;height:auto;background:linear-gradient(135deg,#0284c7,#0369a1);border:1px solid #38bdf8;color:#ffffff;font-weight:800;padding:10px 12px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;text-align:center;line-height:1.35;box-shadow:0 4px 14px rgba(2,132,199,0.35);word-break:break-word;white-space:normal;">
+            <span style="font-size:16px;">📦</span>
+            <span style="display:inline-block;">Importar Pacote ZIP 3D<br><small style="font-size:9.5px;font-weight:600;opacity:0.95;color:#e0f2fe;display:block;margin-top:1px;">(Cenários e Personagens Quaternius)</small></span>
+          </button>
+
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:2px;">
+            <small style="color:#7dd3fc;font-weight:700;font-size:10.5px;">Pacotes Oficiais Recomendados (Quaternius CC0):</small>
+            <a href="https://quaternius.com/packs/modularcharacteroutfitsfantasy.html" target="_blank" rel="noopener noreferrer" style="font-size:10.5px;color:#38bdf8;text-decoration:none;display:flex;align-items:center;justify-content:space-between;background:#090d16;padding:9px 12px;border-radius:8px;border:1px solid #334155;font-weight:600;transition:all 0.2s ease;">
+              <span>🧙‍♂️ Modular Character Outfits Fantasy</span> <b style="color:#38bdf8;">↗</b>
+            </a>
+            <a href="https://quaternius.com/packs/medievalvillagemegakit.html" target="_blank" rel="noopener noreferrer" style="font-size:10.5px;color:#38bdf8;text-decoration:none;display:flex;align-items:center;justify-content:space-between;background:#090d16;padding:9px 12px;border-radius:8px;border:1px solid #334155;font-weight:600;transition:all 0.2s ease;">
+              <span>🏰 Medieval Village Megakit (Cenário)</span> <b style="color:#38bdf8;">↗</b>
+            </a>
+          </div>
         </div>
       </section>
     </aside>

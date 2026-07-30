@@ -1407,7 +1407,7 @@ function enhanceSceneTree(engine) {
 
 export function enhanceV2UI(engine) {
   document.querySelectorAll('#file-input,#project-input').forEach(input => {
-    input.accept = '.fbx,.glb,.gltf,.obj,model/gltf-binary,model/gltf+json,application/octet-stream';
+    input.accept = '.zip,.blend,.fbx,.glb,.gltf,.obj,application/zip,application/x-zip-compressed,model/gltf-binary,model/gltf+json,application/octet-stream';
   });
   const state = ensureState(engine);
   if (state.enhanced) return;
