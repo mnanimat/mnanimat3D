@@ -1,0 +1,849 @@
+﻿{
+    "name":  "Furniture Kit",
+    "author":  "Kenney",
+    "license":  "CC0 1.0 Universal",
+    "source":  "https://kenney.nl/assets/furniture-kit",
+    "count":  140,
+    "objects":  [
+                    {
+                        "id":  "bathroomCabinet",
+                        "name":  "Bathroom Cabinet",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/bathroomCabinet.glb"
+                    },
+                    {
+                        "id":  "bathroomCabinetDrawer",
+                        "name":  "Bathroom Cabinet Drawer",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/bathroomCabinetDrawer.glb"
+                    },
+                    {
+                        "id":  "bathroomMirror",
+                        "name":  "Bathroom Mirror",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/bathroomMirror.glb"
+                    },
+                    {
+                        "id":  "bathroomSink",
+                        "name":  "Bathroom Sink",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/bathroomSink.glb"
+                    },
+                    {
+                        "id":  "bathroomSinkSquare",
+                        "name":  "Bathroom Sink Square",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/bathroomSinkSquare.glb"
+                    },
+                    {
+                        "id":  "bathtub",
+                        "name":  "Bathtub",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/bathtub.glb"
+                    },
+                    {
+                        "id":  "bear",
+                        "name":  "Bear",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/bear.glb"
+                    },
+                    {
+                        "id":  "bedBunk",
+                        "name":  "Bed Bunk",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/bedBunk.glb"
+                    },
+                    {
+                        "id":  "bedDouble",
+                        "name":  "Bed Double",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/bedDouble.glb"
+                    },
+                    {
+                        "id":  "bedSingle",
+                        "name":  "Bed Single",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/bedSingle.glb"
+                    },
+                    {
+                        "id":  "bench",
+                        "name":  "Bench",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/bench.glb"
+                    },
+                    {
+                        "id":  "benchCushion",
+                        "name":  "Bench Cushion",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/benchCushion.glb"
+                    },
+                    {
+                        "id":  "benchCushionLow",
+                        "name":  "Bench Cushion Low",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/benchCushionLow.glb"
+                    },
+                    {
+                        "id":  "bookcaseClosed",
+                        "name":  "Bookcase Closed",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/bookcaseClosed.glb"
+                    },
+                    {
+                        "id":  "bookcaseClosedDoors",
+                        "name":  "Bookcase Closed Doors",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/bookcaseClosedDoors.glb"
+                    },
+                    {
+                        "id":  "bookcaseClosedWide",
+                        "name":  "Bookcase Closed Wide",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/bookcaseClosedWide.glb"
+                    },
+                    {
+                        "id":  "bookcaseOpen",
+                        "name":  "Bookcase Open",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/bookcaseOpen.glb"
+                    },
+                    {
+                        "id":  "bookcaseOpenLow",
+                        "name":  "Bookcase Open Low",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/bookcaseOpenLow.glb"
+                    },
+                    {
+                        "id":  "books",
+                        "name":  "Books",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/books.glb"
+                    },
+                    {
+                        "id":  "cabinetBed",
+                        "name":  "Cabinet Bed",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/cabinetBed.glb"
+                    },
+                    {
+                        "id":  "cabinetBedDrawer",
+                        "name":  "Cabinet Bed Drawer",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/cabinetBedDrawer.glb"
+                    },
+                    {
+                        "id":  "cabinetBedDrawerTable",
+                        "name":  "Cabinet Bed Drawer Table",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/cabinetBedDrawerTable.glb"
+                    },
+                    {
+                        "id":  "cabinetTelevision",
+                        "name":  "Cabinet Television",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/cabinetTelevision.glb"
+                    },
+                    {
+                        "id":  "cabinetTelevisionDoors",
+                        "name":  "Cabinet Television Doors",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/cabinetTelevisionDoors.glb"
+                    },
+                    {
+                        "id":  "cardboardBoxClosed",
+                        "name":  "Cardboard Box Closed",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/cardboardBoxClosed.glb"
+                    },
+                    {
+                        "id":  "cardboardBoxOpen",
+                        "name":  "Cardboard Box Open",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/cardboardBoxOpen.glb"
+                    },
+                    {
+                        "id":  "ceilingFan",
+                        "name":  "Ceiling Fan",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/ceilingFan.glb"
+                    },
+                    {
+                        "id":  "chair",
+                        "name":  "Chair",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/chair.glb"
+                    },
+                    {
+                        "id":  "chairCushion",
+                        "name":  "Chair Cushion",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/chairCushion.glb"
+                    },
+                    {
+                        "id":  "chairDesk",
+                        "name":  "Chair Desk",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/chairDesk.glb"
+                    },
+                    {
+                        "id":  "chairModernCushion",
+                        "name":  "Chair Modern Cushion",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/chairModernCushion.glb"
+                    },
+                    {
+                        "id":  "chairModernFrameCushion",
+                        "name":  "Chair Modern Frame Cushion",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/chairModernFrameCushion.glb"
+                    },
+                    {
+                        "id":  "chairRounded",
+                        "name":  "Chair Rounded",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/chairRounded.glb"
+                    },
+                    {
+                        "id":  "coatRack",
+                        "name":  "Coat Rack",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/coatRack.glb"
+                    },
+                    {
+                        "id":  "coatRackStanding",
+                        "name":  "Coat Rack Standing",
+                        "category":  "Armazenamento",
+                        "file":  "./assets/environment/furniture-kit/models/coatRackStanding.glb"
+                    },
+                    {
+                        "id":  "computerKeyboard",
+                        "name":  "Computer Keyboard",
+                        "category":  "Escritorio",
+                        "file":  "./assets/environment/furniture-kit/models/computerKeyboard.glb"
+                    },
+                    {
+                        "id":  "computerMouse",
+                        "name":  "Computer Mouse",
+                        "category":  "Escritorio",
+                        "file":  "./assets/environment/furniture-kit/models/computerMouse.glb"
+                    },
+                    {
+                        "id":  "computerScreen",
+                        "name":  "Computer Screen",
+                        "category":  "Escritorio",
+                        "file":  "./assets/environment/furniture-kit/models/computerScreen.glb"
+                    },
+                    {
+                        "id":  "desk",
+                        "name":  "Desk",
+                        "category":  "Escritorio",
+                        "file":  "./assets/environment/furniture-kit/models/desk.glb"
+                    },
+                    {
+                        "id":  "deskCorner",
+                        "name":  "Desk Corner",
+                        "category":  "Escritorio",
+                        "file":  "./assets/environment/furniture-kit/models/deskCorner.glb"
+                    },
+                    {
+                        "id":  "doorway",
+                        "name":  "Doorway",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/doorway.glb"
+                    },
+                    {
+                        "id":  "doorwayFront",
+                        "name":  "Doorway Front",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/doorwayFront.glb"
+                    },
+                    {
+                        "id":  "doorwayOpen",
+                        "name":  "Doorway Open",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/doorwayOpen.glb"
+                    },
+                    {
+                        "id":  "dryer",
+                        "name":  "Dryer",
+                        "category":  "Lavanderia",
+                        "file":  "./assets/environment/furniture-kit/models/dryer.glb"
+                    },
+                    {
+                        "id":  "floorCorner",
+                        "name":  "Floor Corner",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/floorCorner.glb"
+                    },
+                    {
+                        "id":  "floorCornerRound",
+                        "name":  "Floor Corner Round",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/floorCornerRound.glb"
+                    },
+                    {
+                        "id":  "floorFull",
+                        "name":  "Floor Full",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/floorFull.glb"
+                    },
+                    {
+                        "id":  "floorHalf",
+                        "name":  "Floor Half",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/floorHalf.glb"
+                    },
+                    {
+                        "id":  "hoodLarge",
+                        "name":  "Hood Large",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/hoodLarge.glb"
+                    },
+                    {
+                        "id":  "hoodModern",
+                        "name":  "Hood Modern",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/hoodModern.glb"
+                    },
+                    {
+                        "id":  "kitchenBar",
+                        "name":  "Kitchen Bar",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenBar.glb"
+                    },
+                    {
+                        "id":  "kitchenBarEnd",
+                        "name":  "Kitchen Bar End",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenBarEnd.glb"
+                    },
+                    {
+                        "id":  "kitchenBlender",
+                        "name":  "Kitchen Blender",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenBlender.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinet",
+                        "name":  "Kitchen Cabinet",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinet.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinetCornerInner",
+                        "name":  "Kitchen Cabinet Corner Inner",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinetCornerInner.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinetCornerRound",
+                        "name":  "Kitchen Cabinet Corner Round",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinetCornerRound.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinetDrawer",
+                        "name":  "Kitchen Cabinet Drawer",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinetDrawer.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinetUpper",
+                        "name":  "Kitchen Cabinet Upper",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinetUpper.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinetUpperCorner",
+                        "name":  "Kitchen Cabinet Upper Corner",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinetUpperCorner.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinetUpperDouble",
+                        "name":  "Kitchen Cabinet Upper Double",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinetUpperDouble.glb"
+                    },
+                    {
+                        "id":  "kitchenCabinetUpperLow",
+                        "name":  "Kitchen Cabinet Upper Low",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCabinetUpperLow.glb"
+                    },
+                    {
+                        "id":  "kitchenCoffeeMachine",
+                        "name":  "Kitchen Coffee Machine",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenCoffeeMachine.glb"
+                    },
+                    {
+                        "id":  "kitchenFridge",
+                        "name":  "Kitchen Fridge",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenFridge.glb"
+                    },
+                    {
+                        "id":  "kitchenFridgeBuiltIn",
+                        "name":  "Kitchen Fridge Built In",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenFridgeBuiltIn.glb"
+                    },
+                    {
+                        "id":  "kitchenFridgeLarge",
+                        "name":  "Kitchen Fridge Large",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenFridgeLarge.glb"
+                    },
+                    {
+                        "id":  "kitchenFridgeSmall",
+                        "name":  "Kitchen Fridge Small",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenFridgeSmall.glb"
+                    },
+                    {
+                        "id":  "kitchenMicrowave",
+                        "name":  "Kitchen Microwave",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenMicrowave.glb"
+                    },
+                    {
+                        "id":  "kitchenSink",
+                        "name":  "Kitchen Sink",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenSink.glb"
+                    },
+                    {
+                        "id":  "kitchenStove",
+                        "name":  "Kitchen Stove",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenStove.glb"
+                    },
+                    {
+                        "id":  "kitchenStoveElectric",
+                        "name":  "Kitchen Stove Electric",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/kitchenStoveElectric.glb"
+                    },
+                    {
+                        "id":  "lampRoundFloor",
+                        "name":  "Lamp Round Floor",
+                        "category":  "Iluminacao",
+                        "file":  "./assets/environment/furniture-kit/models/lampRoundFloor.glb"
+                    },
+                    {
+                        "id":  "lampRoundTable",
+                        "name":  "Lamp Round Table",
+                        "category":  "Iluminacao",
+                        "file":  "./assets/environment/furniture-kit/models/lampRoundTable.glb"
+                    },
+                    {
+                        "id":  "lampSquareCeiling",
+                        "name":  "Lamp Square Ceiling",
+                        "category":  "Iluminacao",
+                        "file":  "./assets/environment/furniture-kit/models/lampSquareCeiling.glb"
+                    },
+                    {
+                        "id":  "lampSquareFloor",
+                        "name":  "Lamp Square Floor",
+                        "category":  "Iluminacao",
+                        "file":  "./assets/environment/furniture-kit/models/lampSquareFloor.glb"
+                    },
+                    {
+                        "id":  "lampSquareTable",
+                        "name":  "Lamp Square Table",
+                        "category":  "Iluminacao",
+                        "file":  "./assets/environment/furniture-kit/models/lampSquareTable.glb"
+                    },
+                    {
+                        "id":  "lampWall",
+                        "name":  "Lamp Wall",
+                        "category":  "Iluminacao",
+                        "file":  "./assets/environment/furniture-kit/models/lampWall.glb"
+                    },
+                    {
+                        "id":  "laptop",
+                        "name":  "Laptop",
+                        "category":  "Escritorio",
+                        "file":  "./assets/environment/furniture-kit/models/laptop.glb"
+                    },
+                    {
+                        "id":  "loungeChair",
+                        "name":  "Lounge Chair",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeChair.glb"
+                    },
+                    {
+                        "id":  "loungeChairRelax",
+                        "name":  "Lounge Chair Relax",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeChairRelax.glb"
+                    },
+                    {
+                        "id":  "loungeDesignChair",
+                        "name":  "Lounge Design Chair",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeDesignChair.glb"
+                    },
+                    {
+                        "id":  "loungeDesignSofa",
+                        "name":  "Lounge Design Sofa",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeDesignSofa.glb"
+                    },
+                    {
+                        "id":  "loungeDesignSofaCorner",
+                        "name":  "Lounge Design Sofa Corner",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeDesignSofaCorner.glb"
+                    },
+                    {
+                        "id":  "loungeSofa",
+                        "name":  "Lounge Sofa",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeSofa.glb"
+                    },
+                    {
+                        "id":  "loungeSofaCorner",
+                        "name":  "Lounge Sofa Corner",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeSofaCorner.glb"
+                    },
+                    {
+                        "id":  "loungeSofaLong",
+                        "name":  "Lounge Sofa Long",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeSofaLong.glb"
+                    },
+                    {
+                        "id":  "loungeSofaOttoman",
+                        "name":  "Lounge Sofa Ottoman",
+                        "category":  "Sala",
+                        "file":  "./assets/environment/furniture-kit/models/loungeSofaOttoman.glb"
+                    },
+                    {
+                        "id":  "paneling",
+                        "name":  "Paneling",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/paneling.glb"
+                    },
+                    {
+                        "id":  "pillow",
+                        "name":  "Pillow",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/pillow.glb"
+                    },
+                    {
+                        "id":  "pillowBlue",
+                        "name":  "Pillow Blue",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/pillowBlue.glb"
+                    },
+                    {
+                        "id":  "pillowBlueLong",
+                        "name":  "Pillow Blue Long",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/pillowBlueLong.glb"
+                    },
+                    {
+                        "id":  "pillowLong",
+                        "name":  "Pillow Long",
+                        "category":  "Quarto",
+                        "file":  "./assets/environment/furniture-kit/models/pillowLong.glb"
+                    },
+                    {
+                        "id":  "plantSmall1",
+                        "name":  "Plant Small1",
+                        "category":  "Plantas",
+                        "file":  "./assets/environment/furniture-kit/models/plantSmall1.glb"
+                    },
+                    {
+                        "id":  "plantSmall2",
+                        "name":  "Plant Small2",
+                        "category":  "Plantas",
+                        "file":  "./assets/environment/furniture-kit/models/plantSmall2.glb"
+                    },
+                    {
+                        "id":  "plantSmall3",
+                        "name":  "Plant Small3",
+                        "category":  "Plantas",
+                        "file":  "./assets/environment/furniture-kit/models/plantSmall3.glb"
+                    },
+                    {
+                        "id":  "pottedPlant",
+                        "name":  "Potted Plant",
+                        "category":  "Plantas",
+                        "file":  "./assets/environment/furniture-kit/models/pottedPlant.glb"
+                    },
+                    {
+                        "id":  "radio",
+                        "name":  "Radio",
+                        "category":  "Eletronicos",
+                        "file":  "./assets/environment/furniture-kit/models/radio.glb"
+                    },
+                    {
+                        "id":  "rugDoormat",
+                        "name":  "Rug Doormat",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/rugDoormat.glb"
+                    },
+                    {
+                        "id":  "rugRectangle",
+                        "name":  "Rug Rectangle",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/rugRectangle.glb"
+                    },
+                    {
+                        "id":  "rugRound",
+                        "name":  "Rug Round",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/rugRound.glb"
+                    },
+                    {
+                        "id":  "rugRounded",
+                        "name":  "Rug Rounded",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/rugRounded.glb"
+                    },
+                    {
+                        "id":  "rugSquare",
+                        "name":  "Rug Square",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/rugSquare.glb"
+                    },
+                    {
+                        "id":  "shower",
+                        "name":  "Shower",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/shower.glb"
+                    },
+                    {
+                        "id":  "showerRound",
+                        "name":  "Shower Round",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/showerRound.glb"
+                    },
+                    {
+                        "id":  "sideTable",
+                        "name":  "Side Table",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/sideTable.glb"
+                    },
+                    {
+                        "id":  "sideTableDrawers",
+                        "name":  "Side Table Drawers",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/sideTableDrawers.glb"
+                    },
+                    {
+                        "id":  "speaker",
+                        "name":  "Speaker",
+                        "category":  "Eletronicos",
+                        "file":  "./assets/environment/furniture-kit/models/speaker.glb"
+                    },
+                    {
+                        "id":  "speakerSmall",
+                        "name":  "Speaker Small",
+                        "category":  "Eletronicos",
+                        "file":  "./assets/environment/furniture-kit/models/speakerSmall.glb"
+                    },
+                    {
+                        "id":  "stairs",
+                        "name":  "Stairs",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/stairs.glb"
+                    },
+                    {
+                        "id":  "stairsCorner",
+                        "name":  "Stairs Corner",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/stairsCorner.glb"
+                    },
+                    {
+                        "id":  "stairsOpen",
+                        "name":  "Stairs Open",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/stairsOpen.glb"
+                    },
+                    {
+                        "id":  "stairsOpenSingle",
+                        "name":  "Stairs Open Single",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/stairsOpenSingle.glb"
+                    },
+                    {
+                        "id":  "stoolBar",
+                        "name":  "Stool Bar",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/stoolBar.glb"
+                    },
+                    {
+                        "id":  "stoolBarSquare",
+                        "name":  "Stool Bar Square",
+                        "category":  "Assentos",
+                        "file":  "./assets/environment/furniture-kit/models/stoolBarSquare.glb"
+                    },
+                    {
+                        "id":  "table",
+                        "name":  "Table",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/table.glb"
+                    },
+                    {
+                        "id":  "tableCloth",
+                        "name":  "Table Cloth",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableCloth.glb"
+                    },
+                    {
+                        "id":  "tableCoffee",
+                        "name":  "Table Coffee",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableCoffee.glb"
+                    },
+                    {
+                        "id":  "tableCoffeeGlass",
+                        "name":  "Table Coffee Glass",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableCoffeeGlass.glb"
+                    },
+                    {
+                        "id":  "tableCoffeeGlassSquare",
+                        "name":  "Table Coffee Glass Square",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableCoffeeGlassSquare.glb"
+                    },
+                    {
+                        "id":  "tableCoffeeSquare",
+                        "name":  "Table Coffee Square",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableCoffeeSquare.glb"
+                    },
+                    {
+                        "id":  "tableCross",
+                        "name":  "Table Cross",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableCross.glb"
+                    },
+                    {
+                        "id":  "tableCrossCloth",
+                        "name":  "Table Cross Cloth",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableCrossCloth.glb"
+                    },
+                    {
+                        "id":  "tableGlass",
+                        "name":  "Table Glass",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableGlass.glb"
+                    },
+                    {
+                        "id":  "tableRound",
+                        "name":  "Table Round",
+                        "category":  "Mesas",
+                        "file":  "./assets/environment/furniture-kit/models/tableRound.glb"
+                    },
+                    {
+                        "id":  "televisionAntenna",
+                        "name":  "Television Antenna",
+                        "category":  "Eletronicos",
+                        "file":  "./assets/environment/furniture-kit/models/televisionAntenna.glb"
+                    },
+                    {
+                        "id":  "televisionModern",
+                        "name":  "Television Modern",
+                        "category":  "Eletronicos",
+                        "file":  "./assets/environment/furniture-kit/models/televisionModern.glb"
+                    },
+                    {
+                        "id":  "televisionVintage",
+                        "name":  "Television Vintage",
+                        "category":  "Eletronicos",
+                        "file":  "./assets/environment/furniture-kit/models/televisionVintage.glb"
+                    },
+                    {
+                        "id":  "toaster",
+                        "name":  "Toaster",
+                        "category":  "Cozinha",
+                        "file":  "./assets/environment/furniture-kit/models/toaster.glb"
+                    },
+                    {
+                        "id":  "toilet",
+                        "name":  "Toilet",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/toilet.glb"
+                    },
+                    {
+                        "id":  "toiletSquare",
+                        "name":  "Toilet Square",
+                        "category":  "Banheiro",
+                        "file":  "./assets/environment/furniture-kit/models/toiletSquare.glb"
+                    },
+                    {
+                        "id":  "trashcan",
+                        "name":  "Trashcan",
+                        "category":  "Decoracao",
+                        "file":  "./assets/environment/furniture-kit/models/trashcan.glb"
+                    },
+                    {
+                        "id":  "wall",
+                        "name":  "Wall",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wall.glb"
+                    },
+                    {
+                        "id":  "wallCorner",
+                        "name":  "Wall Corner",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wallCorner.glb"
+                    },
+                    {
+                        "id":  "wallCornerRond",
+                        "name":  "Wall Corner Rond",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wallCornerRond.glb"
+                    },
+                    {
+                        "id":  "wallDoorway",
+                        "name":  "Wall Doorway",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wallDoorway.glb"
+                    },
+                    {
+                        "id":  "wallDoorwayWide",
+                        "name":  "Wall Doorway Wide",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wallDoorwayWide.glb"
+                    },
+                    {
+                        "id":  "wallHalf",
+                        "name":  "Wall Half",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wallHalf.glb"
+                    },
+                    {
+                        "id":  "wallWindow",
+                        "name":  "Wall Window",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wallWindow.glb"
+                    },
+                    {
+                        "id":  "wallWindowSlide",
+                        "name":  "Wall Window Slide",
+                        "category":  "Construcao",
+                        "file":  "./assets/environment/furniture-kit/models/wallWindowSlide.glb"
+                    },
+                    {
+                        "id":  "washer",
+                        "name":  "Washer",
+                        "category":  "Lavanderia",
+                        "file":  "./assets/environment/furniture-kit/models/washer.glb"
+                    },
+                    {
+                        "id":  "washerDryerStacked",
+                        "name":  "Washer Dryer Stacked",
+                        "category":  "Lavanderia",
+                        "file":  "./assets/environment/furniture-kit/models/washerDryerStacked.glb"
+                    }
+                ]
+}
