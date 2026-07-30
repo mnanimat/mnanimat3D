@@ -91,6 +91,7 @@ export class MNAnimat3DEngine extends EventTarget {
     this.orbit.minDistance = 1;
     this.orbit.maxDistance = 100;
     this.orbit.update();
+    this.orbit.addEventListener('change', () => this.emit('camerachange'));
 
     this.transform = new TransformControls(this.camera, this.renderer.domElement);
     this.transform.setSize(0.85);
@@ -164,6 +165,35 @@ export class MNAnimat3DEngine extends EventTarget {
 
   emit(type, detail = {}) { this.dispatchEvent(new CustomEvent(type, { detail })); }
 
+  on(type, listener) {
+    if (!this._wrappedListeners) this._wrappedListeners = new Map();
+    let listenerMap = this._wrappedListeners.get(type);
+    if (!listenerMap) {
+      listenerMap = new Map();
+      this._wrappedListeners.set(type, listenerMap);
+    }
+    const wrapped = (e) => listener(e.detail, e);
+    listenerMap.set(listener, wrapped);
+    this.addEventListener(type, wrapped);
+    return this;
+  }
+
+  off(type, listener) {
+    if (this._wrappedListeners && this._wrappedListeners.has(type)) {
+      const listenerMap = this._wrappedListeners.get(type);
+      if (listenerMap.has(listener)) {
+        const wrapped = listenerMap.get(listener);
+        this.removeEventListener(type, wrapped);
+        listenerMap.delete(listener);
+      } else {
+        this.removeEventListener(type, listener);
+      }
+    } else {
+      this.removeEventListener(type, listener);
+    }
+    return this;
+  }
+
   resize() {
     const width = Math.max(1, this.container.clientWidth);
     const height = Math.max(1, this.container.clientHeight);
@@ -183,6 +213,7 @@ export class MNAnimat3DEngine extends EventTarget {
     this.orbit.update();
     if (this.selectionBox) this.selectionBox.update();
     this.renderer.render(this.scene, this.camera);
+    this.emit('render');
   };
 
   onPointerUp(event) {
@@ -487,12 +518,22 @@ export class MNAnimat3DEngine extends EventTarget {
 
   setView(view) {
     const target = this.orbit.target.clone();
-    const distance = this.camera.position.distanceTo(target);
-    const directions = { top: [0, 1, 0.001], right: [1, 0.001, 0], front: [0, 0.001, 1] };
-    this.camera.position.copy(target).add(new THREE.Vector3(...directions[view]).normalize().multiplyScalar(distance));
+    const distance = Math.max(3, this.camera.position.distanceTo(target));
+    const directions = {
+      top: [0, 1, 0.0001],
+      bottom: [0, -1, 0.0001],
+      right: [1, 0.0001, 0],
+      left: [-1, 0.0001, 0],
+      front: [0, 0.0001, 1],
+      back: [0, 0.0001, -1],
+      iso: [1, 0.85, 1]
+    };
+    const dir = directions[view] || directions.iso;
+    this.camera.position.copy(target).add(new THREE.Vector3(...dir).normalize().multiplyScalar(distance));
     this.camera.up.set(0, 1, 0);
     this.camera.lookAt(target);
     this.orbit.update();
+    this.emit('camerachange');
   }
 
   focusSelection() {

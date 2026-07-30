@@ -178,6 +178,22 @@
           <button class="tool-button" id="v3-obj-gizmo-mode" title="Alternar Mover/Girar/Escala" style="font-size:11px;padding:3px 8px;background:#4f46e5;color:#fff;border-radius:12px;">🎮 Mover Gizmo</button>
         </div>
 
+        <!-- 3D NAVIGATION VIEW CUBE (CUBO DE NAVEGAÇÃO CAD 3D) -->
+        <div id="v3-view-cube-wrapper" title="Cubo de Navegação CAD 3D: Clique em uma face para alinhar a visão">
+          <div id="v3-view-cube" class="v3-view-cube-container">
+            <div class="v3-cube-face top" data-view="top">TOP</div>
+            <div class="v3-cube-face bottom" data-view="bottom">BOT</div>
+            <div class="v3-cube-face front" data-view="front">FRONT</div>
+            <div class="v3-cube-face back" data-view="back">BACK</div>
+            <div class="v3-cube-face right" data-view="right">RIGHT</div>
+            <div class="v3-cube-face left" data-view="left">LEFT</div>
+          </div>
+          <div class="v3-cube-controls">
+            <button class="v3-cube-btn" data-view="iso" title="Visão Isométrica 3D">ISO</button>
+            <button class="v3-cube-btn" id="v3-cube-reset" title="Resetar Câmera">RESET</button>
+          </div>
+        </div>
+
         <div class="view-toolbar floating-panel">
           <button id="grid-toggle" class="view-chip active"><span data-icon="grid"></span>Grade</button>
           <button id="shading-toggle" class="view-chip"><span data-icon="sphere"></span>Material</button>

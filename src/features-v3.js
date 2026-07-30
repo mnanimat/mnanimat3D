@@ -1711,22 +1711,27 @@ function workspaceHTML() {
   </section>
 
   <section data-v3-page="cad" class="v3-page">
-    <!-- CAD STUDIO TOP DOCUMENT BAR -->
+    <!-- CAD TOP CONTROL BAR -->
     <div style="background:#090d16;border:1px solid #1e293b;border-radius:10px;padding:8px 12px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="background:#0284c7;color:#fff;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:0.05em;">CAD STUDIO</span>
-        <strong style="color:#e2e8f0;font-size:12.5px;">📁 PROJETO_ENGINEERING_3D.cad</strong>
+        <span style="background:#0284c7;color:#fff;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:0.05em;">ESTÚDIO CAD PARAMÉTRICO</span>
+        <strong style="color:#e2e8f0;font-size:12.5px;">📁 PROJETO_MECANICO_CAD.step</strong>
       </div>
       <div style="display:flex;align-items:center;gap:6px;">
-        <button id="v3-cad-toggle-timeline" style="padding:4px 10px;background:#dc2626;color:#fff;border:1px solid #f87171;border-radius:6px;font-size:10.5px;font-weight:700;cursor:pointer;" title="Remover / Ocultar a linha do tempo para expandir a viewport CAD">⏱️ Ocultar Linha do Tempo</button>
-        <button id="v3-cad-export-techdraw" style="padding:4px 10px;background:#0284c7;color:#fff;border-color:#38bdf8;font-size:10.5px;font-weight:700;">📐 TechDraw 2D</button>
-        <button id="v3-cad-export-bom" style="padding:4px 10px;background:#4f46e5;color:#fff;font-size:10.5px;font-weight:600;">📋 Tabela BOM</button>
+        <button id="v3-cad-toggle-timeline" style="padding:5px 11px;background:#1e293b;color:#f8fafc;border:1px solid #334155;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Alternar Linha do Tempo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Linha do Tempo
+        </button>
+        <button id="v3-cad-toggle-inspector" style="padding:5px 11px;background:#1e293b;color:#f8fafc;border:1px solid #334155;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;" title="Alternar Inspetor">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg> Inspetor
+        </button>
+        <button id="v3-cad-export-techdraw" style="padding:5px 11px;background:#0284c7;color:#fff;border:1px solid #38bdf8;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;">📐 TechDraw 2D</button>
+        <button id="v3-cad-export-bom" style="padding:5px 11px;background:#4f46e5;color:#fff;border:1px solid #6366f1;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;">📋 Tabela BOM</button>
       </div>
     </div>
 
-    <!-- GIZMOS & DIRECT MANIPULATION BAR (ALWAYS VISIBLE) -->
+    <!-- TRANSFORMATIONS & GIZMOS BAR -->
     <div style="background:#0b0f19;border:1px solid #1e293b;border-radius:10px;padding:8px;margin-bottom:10px;">
-      <span style="font-size:10px;color:#94a3b8;display:block;margin-bottom:4px;font-weight:600;">🖐️ Ferramentas de Transformação & Gizmo 3D:</span>
+      <span style="font-size:10px;color:#94a3b8;display:block;margin-bottom:4px;font-weight:600;">🖐️ Controles de Transformação & Gizmo 3D:</span>
       <div class="v3-segment" style="margin:0;">
         <button data-v3-cad-gizmo="translate" class="active">🖐️ Mover (W)</button>
         <button data-v3-cad-gizmo="rotate">🔄 Rotacionar (E)</button>
@@ -1735,20 +1740,22 @@ function workspaceHTML() {
       </div>
     </div>
 
-    <!-- SUB-NAVIGATION WORKFLOW TABS FOR CAD PAGE -->
+    <!-- SUB-NAVIGATION TABS FOR CAD PAGE -->
     <div class="v3-subnav" id="v3-cad-subnav">
-      <button class="v3-subnav-btn active" data-cad-tab="sketch">✏️ 1. Esboço & Planos</button>
-      <button class="v3-subnav-btn" data-cad-tab="constraints">📐 2. Restrições & Cotas</button>
-      <button class="v3-subnav-btn" data-cad-tab="3d-ops">📦 3. Operações 3D & Weldments</button>
-      <button class="v3-subnav-btn" data-cad-tab="components">⚙️ 4. Componentes & Veículo</button>
-      <button class="v3-subnav-btn" data-cad-tab="builder">🛠️ 5. Construtor 18 Estágios</button>
-      <button class="v3-subnav-btn" data-cad-tab="tree">📊 6. Árvore & Transformação</button>
+      <button class="v3-subnav-btn active" data-cad-tab="sketch">✏️ 1. Esboço 2D & Planos</button>
+      <button class="v3-subnav-btn" data-cad-tab="ops3d">📦 2. Operações 3D & Recursos</button>
+      <button class="v3-subnav-btn" data-cad-tab="weldments">📐 3. Perfis Estruturais (Weldments)</button>
+      <button class="v3-subnav-btn" data-cad-tab="components">⚙️ 4. Componentes Automotivos</button>
+      <button class="v3-subnav-btn" data-cad-tab="builder">🛠️ 5. Construtor Buggy (18 Estágios)</button>
+      <button class="v3-subnav-btn" data-cad-tab="tree">📂 6. Árvore de Peças & Transformação</button>
+      <button class="v3-subnav-btn" data-cad-tab="prompt">🤖 7. Assistente CAD AI</button>
     </div>
 
-    <!-- SUB-PANEL 1: SKETCH & WORKPLANES -->
+    <!-- SUB-PANEL 1: ESBOÇO 2D & PLANOS -->
     <div class="v3-subpanel active" data-cad-panel="sketch">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">✏️ Plano de Trabalho & Esboço 2D (Sketch)</h3>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:12px;">
+        <h3 style="margin-top:0;color:#38bdf8;font-size:14px;font-weight:800;">✏️ Plano de Trabalho & Esboço 2D (Sketch)</h3>
+        
         <label class="v3-control">Plano Ativo do Esboço
           <select id="v3-cad-workplane">
             <option value="xz">Plano XZ (Chão / Base)</option>
@@ -1757,7 +1764,8 @@ function workspaceHTML() {
             <option value="face">Plano da Face Selecionada</option>
           </select>
         </label>
-        <div class="v3-segment">
+
+        <div class="v3-segment" style="margin-top:8px;">
           <button data-v3-cad-draw="line" class="active">✏️ Linha Reta</button>
           <button data-v3-cad-draw="spline">〰️ Spline</button>
           <button data-v3-cad-draw="arc">🌙 Arco 3P</button>
@@ -1766,52 +1774,42 @@ function workspaceHTML() {
           <button data-v3-cad-draw="slot">🎰 Slot / Guia</button>
         </div>
 
-        <h4 style="margin:10px 0 4px;font-size:11px;color:#38bdf8;">📐 Desenhar Linha por Medida e Ângulo:</h4>
+        <h4 style="margin:12px 0 4px;font-size:11px;color:#38bdf8;">📐 Desenhar Linha por Medida e Ângulo:</h4>
         <div class="v3-grid two">
           <label class="v3-control">Medida / Comprimento (mm)<input id="v3-cad-line-length" type="number" step="10" value="500"></label>
           <label class="v3-control">Ângulo (°)<input id="v3-cad-line-angle" type="number" step="1" value="0"></label>
         </div>
-        <button id="v3-cad-add-measured-line" style="background:#0284c7;color:#fff;font-weight:700;padding:6px 10px;border-radius:6px;width:100%;margin-top:4px;font-size:11px;border:1px solid #38bdf8;cursor:pointer;">
+        <button id="v3-cad-add-measured-line" style="background:#0284c7;color:#fff;font-weight:700;padding:8px 10px;border-radius:6px;width:100%;margin-top:6px;font-size:11px;border:1px solid #38bdf8;cursor:pointer;">
           ➕ Adicionar Linha (Medida & Ângulo)
         </button>
 
-        <h4 style="margin:10px 0 4px;font-size:11px;color:#a7f3d0;">📐 Ferramenta: Atribuir Medida & Ângulo em Linha do Esboço:</h4>
-        <div style="background:#030712;border:1px solid #1f2937;border-radius:8px;padding:8px;">
+        <h4 style="margin:12px 0 4px;font-size:11px;color:#34d399;">📐 Editar Medida & Ângulo de Linha Existente:</h4>
+        <div style="background:#030712;border:1px solid #1f2937;border-radius:8px;padding:10px;">
           <label class="v3-control">Selecione a Linha
             <select id="v3-cad-segment-select">
               <option value="-1">Nenhuma linha selecionada</option>
             </select>
           </label>
-          <div class="v3-grid two" style="margin-top:4px;">
+          <div class="v3-grid two" style="margin-top:6px;">
             <label class="v3-control">Nova Medida (mm)<input id="v3-cad-edit-len" type="number" step="5" value="500"></label>
             <label class="v3-control">Novo Ângulo (°)<input id="v3-cad-edit-ang" type="number" step="1" value="0"></label>
           </div>
-          <button id="v3-cad-apply-line-cota" style="background:#10b981;color:#022c22;font-weight:700;padding:6px 10px;border-radius:6px;width:100%;margin-top:4px;font-size:11px;border:1px solid #34d399;cursor:pointer;">
-            📐 Aplicar Medida & Ângulo na Linha Selecionada
+          <button id="v3-cad-apply-line-cota" style="background:#10b981;color:#022c22;font-weight:700;padding:8px 10px;border-radius:6px;width:100%;margin-top:6px;font-size:11px;border:1px solid #34d399;cursor:pointer;">
+            📐 Aplicar Medida & Ângulo
           </button>
         </div>
 
-        <div class="v3-grid two" style="margin-top:8px;">
-          <button id="v3-cad-toggle-draw-click" style="background:#4f46e5;color:#fff;min-height:30px;font-size:10px;font-weight:600;">🎯 Clique no Viewport 3D para Desenhar</button>
-          <button id="v3-cad-clear-sketch" class="v3-danger" style="min-height:30px;font-size:10px;">🗑️ Limpar Esboço</button>
+        <div class="v3-grid two" style="margin-top:10px;">
+          <button id="v3-cad-toggle-draw-click" style="background:#4f46e5;color:#fff;min-height:32px;font-size:10px;font-weight:600;">🎯 Clique no Viewport 3D para Desenhar</button>
+          <button id="v3-cad-clear-sketch" class="v3-danger" style="min-height:32px;font-size:10px;">🗑️ Limpar Esboço</button>
         </div>
-        <button id="v3-cad-extrude-tube" style="background:#0284c7;color:#fff;font-weight:700;padding:8px 12px;border-radius:6px;width:100%;margin-top:6px;font-size:11px;border:1px solid #38bdf8;cursor:pointer;">
-          ⚡ Extrudar Linha / Esboço em Tubo 3D (Tube Extrude)
+
+        <button id="v3-cad-extrude-tube" style="background:#0284c7;color:#fff;font-weight:700;padding:9px 12px;border-radius:6px;width:100%;margin-top:8px;font-size:11px;border:1px solid #38bdf8;cursor:pointer;">
+          ⚡ Extrudar Esboço em Tubo 3D (Tube Extrude)
         </button>
 
-        <h4 style="margin:10px 0 4px;font-size:11px;color:#94a3b8;">Linhas e Segmentos Criados no Esboço:</h4>
-        <div id="v3-cad-points-list" class="v3-list" style="margin-top:4px;max-height:120px;overflow-y:auto;background:#030712;padding:6px;border-radius:6px;border:1px solid #1f2937;">
-          <p style="font-size:10px;color:#8f98b0;margin:0;">Nenhuma linha criada no Sketch.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SUB-PANEL 2: CONSTRAINTS & SMART DIMENSIONS -->
-    <div class="v3-subpanel" data-cad-panel="constraints">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">📐 Restrições Geométricas & Cotas Inteligentes</h3>
-        <p style="font-size:11px;color:#94a3b8;">Aplique restrições paramétricas aos elementos geométricos selecionados no esboço.</p>
-        <div class="v3-grid two" style="margin-top:8px;">
+        <h4 style="margin:12px 0 6px;font-size:11px;color:#facc15;">🔗 Restrições Geométricas & Cotas Inteligentes:</h4>
+        <div class="v3-grid two">
           <button data-v3-constraint="coincident" style="min-height:32px;">🔗 Coincidente</button>
           <button data-v3-constraint="parallel" style="min-height:32px;">║║ Paralelo</button>
           <button data-v3-constraint="perpendicular" style="min-height:32px;">⟂ Perpendicular</button>
@@ -1819,25 +1817,44 @@ function workspaceHTML() {
           <button data-v3-constraint="concentric" style="min-height:32px;">◎ Concêntrico</button>
           <button data-v3-constraint="dimension" style="min-height:32px;background:#0284c7;color:#fff;">📐 Cota Inteligente</button>
         </div>
+
+        <h4 style="margin:12px 0 4px;font-size:11px;color:#94a3b8;">Segmentos do Esboço:</h4>
+        <div id="v3-cad-points-list" class="v3-list" style="margin-top:4px;max-height:110px;overflow-y:auto;background:#030712;padding:6px;border-radius:6px;border:1px solid #1f2937;">
+          <p style="font-size:10px;color:#8f98b0;margin:0;">Nenhum segmento criado no Esboço.</p>
+        </div>
       </div>
     </div>
 
-    <!-- SUB-PANEL 3: 3D OPERATIONS & WELDMENTS -->
-    <div class="v3-subpanel" data-cad-panel="3d-ops">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">📦 Operações de Modelagem 3D & Weldments</h3>
+    <!-- SUB-PANEL 2: OPERAÇÕES 3D & RECURSOS -->
+    <div class="v3-subpanel" data-cad-panel="ops3d">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:12px;">
+        <h3 style="margin-top:0;color:#a78bfa;font-size:14px;font-weight:800;">📦 Operações Tridimensionais & Recursos B-Rep</h3>
+        <p style="font-size:11px;color:#cbd5e1;margin-bottom:10px;">Transforme esboços 2D em corpos sólidos tridimensionais avançados.</p>
         <div class="v3-grid two">
-          <button id="v3-cad-extrude-profile">📦 Extrudar Perfil</button>
-          <button id="v3-cad-revolve-profile">🌀 Revolução 360°</button>
-          <button id="v3-cad-sweep-profile">🌊 Varredura (Sweep)</button>
-          <button id="v3-cad-loft-profile">🔀 Transição (Loft)</button>
-          <button id="v3-cad-shell-op">🛡️ Casca / Shell</button>
-          <button id="v3-cad-fillet-edges">🔘 Arredondar (Fillet)</button>
-          <button id="v3-cad-chamfer-edges">📐 Chanfrar (Chamfer)</button>
-          <button id="v3-cad-boolean-cut">🕳️ Subtração Booleana / Furo</button>
+          <button id="v3-cad-extrude-profile" style="min-height:34px;background:#0284c7;color:#fff;font-weight:600;">📦 Extrudar Perfil</button>
+          <button id="v3-cad-revolve-profile" style="min-height:34px;background:#0284c7;color:#fff;font-weight:600;">🌀 Revolução 360°</button>
+          <button id="v3-cad-sweep-profile" style="min-height:34px;">🌊 Varredura (Sweep)</button>
+          <button id="v3-cad-loft-profile" style="min-height:34px;">🔀 Transição (Loft)</button>
+          <button id="v3-cad-shell-op" style="min-height:34px;">🛡️ Casca / Shell</button>
+          <button id="v3-cad-fillet-edges" style="min-height:34px;">🔘 Arredondar (Fillet)</button>
+          <button id="v3-cad-chamfer-edges" style="min-height:34px;">📐 Chanfrar (Chamfer)</button>
+          <button id="v3-cad-boolean-cut" style="min-height:34px;background:#e11d48;color:#fff;">🕳️ Subtração Booleana / Furo</button>
         </div>
 
-        <h3 style="margin-top:12px;">📐 Weldments & Perfil Estrutural</h3>
+        <h3 style="margin-top:14px;color:#38bdf8;font-size:13px;font-weight:800;">🧊 Criar Sólidos Paramétricos Básicos</h3>
+        <div class="v3-grid three">
+          <button data-v3-primitive="box">Cubo Paramétrico</button>
+          <button data-v3-primitive="cylinder">Cilindro Paramétrico</button>
+          <button data-v3-primitive="sphere">Esfera Paramétrica</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUB-PANEL 3: PERFIS ESTRUTURAIS & WELDMENTS -->
+    <div class="v3-subpanel" data-cad-panel="weldments">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:12px;">
+        <h3 style="margin-top:0;color:#facc15;font-size:14px;font-weight:800;">📐 Perfis Estruturais & Weldments Automotivos</h3>
+        
         <label class="v3-control">Perfil do Tubo Estrutural
           <select id="v3-cad-pipe-type">
             <option value="round_25">Tubo Redondo 25mm × 1.5mm (Chassi Tubular)</option>
@@ -1850,56 +1867,56 @@ function workspaceHTML() {
           <label class="v3-control">Diâmetro (mm)<input id="v3-cad-pipe-dia" type="number" step="1" value="30"></label>
           <label class="v3-control">Espessura (mm)<input id="v3-cad-pipe-thick" type="number" step="0.1" value="2.0"></label>
         </div>
-        <button id="v3-cad-generate-chassis" style="width:100%;margin-top:6px;padding:8px;background:#10b981;color:#022c22;font-weight:700;">
+        <button id="v3-cad-generate-chassis" style="width:100%;margin-top:8px;padding:10px;background:#10b981;color:#022c22;font-weight:800;border:1px solid #34d399;border-radius:8px;cursor:pointer;">
           ⚡ Gerar Estrutura Tubular do Chassi
         </button>
-        <div class="v3-grid two" style="margin-top:6px;">
-          <button id="v3-cad-miter-joint">Corte Bisel 45°</button>
-          <button id="v3-cad-notch-joint">Boca de Lobo / Notch</button>
+        <div class="v3-grid two" style="margin-top:8px;">
+          <button id="v3-cad-miter-joint" style="min-height:32px;">Corte Bisel 45°</button>
+          <button id="v3-cad-notch-joint" style="min-height:32px;">Boca de Lobo / Notch</button>
         </div>
 
-        <h3 style="margin-top:12px;">📐 Matrizes Paramétricas</h3>
+        <h3 style="margin-top:14px;color:#38bdf8;font-size:13px;font-weight:800;">📐 Matrizes Paramétricas (Array Patterns)</h3>
         <div class="v3-grid two">
           <label class="v3-control">Cópia (Qtd)<input id="v3-cad-array-count" type="number" step="1" value="4"></label>
           <label class="v3-control">Espaçamento (m)<input id="v3-cad-array-dist" type="number" step="0.1" value="0.5"></label>
         </div>
-        <div class="v3-grid two">
-          <button id="v3-cad-linear-array">Fila Linear (X)</button>
-          <button id="v3-cad-polar-array">Matriz Circular 360°</button>
+        <div class="v3-grid two" style="margin-top:6px;">
+          <button id="v3-cad-linear-array" style="min-height:34px;background:#0284c7;color:#fff;">Fila Linear (X)</button>
+          <button id="v3-cad-polar-array" style="min-height:34px;background:#0284c7;color:#fff;">Matriz Circular 360°</button>
         </div>
       </div>
     </div>
 
-    <!-- SUB-PANEL 4: COMPONENTS & VEHICLE -->
+    <!-- SUB-PANEL 4: COMPONENTES AUTOMOTIVOS -->
     <div class="v3-subpanel" data-cad-panel="components">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">⚙️ Gerador de Componentes Automotivos & Aeronáuticos</h3>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:12px;">
+        <h3 style="margin-top:0;color:#38bdf8;font-size:14px;font-weight:800;">⚙️ Gerador de Componentes Automotivos & Aeronáuticos</h3>
         <div class="v3-grid two">
-          <button id="v3-cad-gen-engine" style="background:#4f46e5;color:#fff;font-weight:600;">🏎️ Bloco de Motor V8</button>
-          <button id="v3-cad-gen-suspension" style="background:#0284c7;color:#fff;font-weight:600;">🛞 Suspensão Duplo A</button>
-          <button id="v3-cad-gen-brakes" style="background:#e11d48;color:#fff;font-weight:600;">🛑 Disco de Freio & Pinça</button>
-          <button id="v3-cad-gen-wheel" style="background:#059669;color:#fff;font-weight:600;">⭕ Roda & Pneu</button>
-          <button id="v3-cad-gen-exhaust" style="background:#d97706;color:#fff;font-weight:600;">💨 Escapamento 4-em-1</button>
-          <button id="v3-cad-gen-steering" style="background:#7c3aed;color:#fff;font-weight:600;">☸️ Volante & Direção</button>
-          <button id="v3-cad-gen-bodywork" style="background:#2563eb;color:#fff;font-weight:600;">🚘 Carenagem Sheet Metal</button>
-          <button id="v3-cad-gen-fuselage" style="background:#0284c7;color:#fff;font-weight:700;">✈️ Fuselagem Aerodinâmica</button>
-          <button id="v3-cad-gen-full-car" style="background:#10b981;color:#022c22;font-weight:700;grid-column:span 2;">⚡ Montar Veículo Completo 3D</button>
+          <button id="v3-cad-gen-engine" style="background:#4f46e5;color:#fff;font-weight:600;min-height:36px;">🏎️ Bloco de Motor V8</button>
+          <button id="v3-cad-gen-suspension" style="background:#0284c7;color:#fff;font-weight:600;min-height:36px;">🛞 Suspensão Duplo A</button>
+          <button id="v3-cad-gen-brakes" style="background:#e11d48;color:#fff;font-weight:600;min-height:36px;">🛑 Disco de Freio & Pinça</button>
+          <button id="v3-cad-gen-wheel" style="background:#059669;color:#fff;font-weight:600;min-height:36px;">⭕ Roda & Pneu</button>
+          <button id="v3-cad-gen-exhaust" style="background:#d97706;color:#fff;font-weight:600;min-height:36px;">💨 Escapamento 4-em-1</button>
+          <button id="v3-cad-gen-steering" style="background:#7c3aed;color:#fff;font-weight:600;min-height:36px;">☸️ Volante & Direção</button>
+          <button id="v3-cad-gen-bodywork" style="background:#2563eb;color:#fff;font-weight:600;min-height:36px;">🚘 Carenagem Sheet Metal</button>
+          <button id="v3-cad-gen-fuselage" style="background:#0284c7;color:#fff;font-weight:700;min-height:36px;">✈️ Fuselagem Aerodinâmica</button>
+          <button id="v3-cad-gen-full-car" style="background:#10b981;color:#022c22;font-weight:800;grid-column:span 2;min-height:40px;margin-top:4px;">⚡ Montar Veículo Completo 3D</button>
         </div>
 
-        <h3 style="margin-top:12px;">🔩 Elementos de Fixação & Juntas</h3>
+        <h3 style="margin-top:14px;color:#a78bfa;font-size:13px;font-weight:800;">🔩 Elementos de Fixação & Juntas Cinemáticas</h3>
         <div class="v3-grid two">
-          <button id="v3-cad-add-bolt" style="background:#374151;color:#fff;">🔩 Parafuso M10</button>
-          <button id="v3-cad-add-nut" style="background:#374151;color:#fff;">🔩 Porca & Arruela</button>
-          <button id="v3-cad-joint-revolute" style="background:#0284c7;color:#fff;">🔄 Junta Rotativa</button>
-          <button id="v3-cad-joint-slider" style="background:#0284c7;color:#fff;">↕️ Junta Deslizante</button>
+          <button id="v3-cad-add-bolt" style="background:#374151;color:#fff;min-height:32px;">🔩 Parafuso M10</button>
+          <button id="v3-cad-add-nut" style="background:#374151;color:#fff;min-height:32px;">🔩 Porca & Arruela</button>
+          <button id="v3-cad-joint-revolute" style="background:#0284c7;color:#fff;min-height:32px;">🔄 Junta Rotativa</button>
+          <button id="v3-cad-joint-slider" style="background:#0284c7;color:#fff;min-height:32px;">↕️ Junta Deslizante</button>
         </div>
       </div>
     </div>
 
     <!-- SUB-PANEL 5: BUGGY BUILDER 18 STAGES -->
     <div class="v3-subpanel" data-cad-panel="builder">
-      <div style="background:#090d16;border:1px solid #10b981;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;color:#6ee7b7;">🛠️ Construtor Sequencial (Buggy FX 1000 - 18 Estágios)</h3>
+      <div style="background:#090d16;border:1px solid #10b981;border-radius:10px;padding:12px;">
+        <h3 style="margin-top:0;color:#6ee7b7;font-size:14px;font-weight:800;">🛠️ Construtor Sequencial (Buggy FX 1000 - 18 Estágios)</h3>
         <p style="font-size:11px;color:#a7f3d0;margin-bottom:8px;">Construção passo a passo com tubos sem costura S355, chapas dobradas S235 e coxins silent block.</p>
 
         <label class="v3-control">Selecione o Estágio de Montagem
@@ -1925,36 +1942,36 @@ function workspaceHTML() {
           </select>
         </label>
 
-        <div id="v3-cad-stage-info" style="background:#030712;border:1px solid #1f2937;border-radius:8px;padding:8px;margin-bottom:8px;font-size:10px;color:#c9d1d9;">
+        <div id="v3-cad-stage-info" style="background:#030712;border:1px solid #1f2937;border-radius:8px;padding:10px;margin-bottom:8px;font-size:10.5px;color:#c9d1d9;">
           <strong style="color:#38bdf8;display:block;margin-bottom:4px;">Estágio 1: Quadro Base Inferior (Main Bottom Frame)</strong>
           <span>Construção da base do chassi com tubos sem costura S355 Ø40x2.0 e Ø32x2.5. Comprimento total 2305mm, largura frontal 380mm, traseira 300mm. Cortes em boca de lobo a 45°.</span>
         </div>
 
         <div class="v3-grid two" style="margin-bottom:8px;">
-          <button id="v3-cad-build-stage" style="background:#0284c7;color:#fff;font-weight:700;">🛠️ Gerar Estágio em 3D</button>
-          <button id="v3-cad-build-buggy-full" style="background:#10b981;color:#022c22;font-weight:700;">🏎️ Montar Buggy FX 1000 Completo</button>
+          <button id="v3-cad-build-stage" style="background:#0284c7;color:#fff;font-weight:700;padding:8px;">🛠️ Gerar Estágio em 3D</button>
+          <button id="v3-cad-build-buggy-full" style="background:#10b981;color:#022c22;font-weight:700;padding:8px;">🏎️ Montar Buggy FX 1000 Completo</button>
         </div>
 
         <div class="v3-grid two">
-          <button id="v3-cad-gen-s235-part" style="background:#d97706;color:#fff;font-weight:600;">🔩 Gerar Placa S235 CNC</button>
-          <button onclick="document.querySelector('#v3-cad-export-bom').click();" style="background:#4f46e5;color:#fff;font-weight:600;">📋 Ver Lista BOM</button>
+          <button id="v3-cad-gen-s235-part" style="background:#d97706;color:#fff;font-weight:600;padding:8px;">🔩 Gerar Placa S235 CNC</button>
+          <button onclick="document.querySelector('#v3-cad-export-bom').click();" style="background:#4f46e5;color:#fff;font-weight:600;padding:8px;">📋 Ver Lista BOM</button>
         </div>
       </div>
     </div>
 
-    <!-- SUB-PANEL 6: PART TREE & NUMERIC TRANSFORM -->
+    <!-- SUB-PANEL 6: ÁRVORE DE PEÇAS & TRANSFORMAÇÃO -->
     <div class="v3-subpanel" data-cad-panel="tree">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">📂 Árvore de Recursos & Histórico (Feature List)</h3>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:12px;">
+        <h3 style="margin-top:0;color:#38bdf8;font-size:14px;font-weight:800;">📂 Árvore de Recursos & Histórico (Feature Tree)</h3>
         <div id="v3-cad-part-tree" class="v3-list" style="max-height:140px;overflow-y:auto;background:#030712;padding:6px;border-radius:8px;border:1px solid #1f2937;">
           <p style="font-size:10.5px;color:#8f98b0;margin:0;">Nenhum componente selecionado na cena.</p>
         </div>
         <div class="v3-grid two" style="margin-top:6px;">
-          <button id="v3-cad-tree-duplicate">📋 Duplicar Peça</button>
-          <button id="v3-cad-tree-delete" class="v3-danger">🗑️ Excluir Peça</button>
+          <button id="v3-cad-tree-duplicate" style="min-height:30px;">📋 Duplicar Peça</button>
+          <button id="v3-cad-tree-delete" class="v3-danger" style="min-height:30px;">🗑️ Excluir Peça</button>
         </div>
 
-        <h3 style="margin-top:12px;">🎯 Transformação Numérica & Alinhamento</h3>
+        <h3 style="margin-top:14px;color:#38bdf8;font-size:13px;font-weight:800;">🎯 Transformação Numérica & Alinhamento</h3>
         <div class="v3-grid three">
           <label class="v3-control">Posição X (m)<input id="v3-cad-pos-x" type="number" step="0.05" value="0.00"></label>
           <label class="v3-control">Posição Y (m)<input id="v3-cad-pos-y" type="number" step="0.05" value="0.00"></label>
@@ -1976,7 +1993,7 @@ function workspaceHTML() {
           <button id="v3-cad-reset-rot">🔄 Zerar Rotação</button>
         </div>
 
-        <h3 style="margin-top:12px;">🎨 Material Mecânico & Renderização</h3>
+        <h3 style="margin-top:14px;color:#a78bfa;font-size:13px;font-weight:800;">🎨 Material Mecânico & Renderização</h3>
         <label class="v3-control">Nome do Componente
           <input id="v3-cad-object-name" type="text" placeholder="Selecione uma peça na cena..." />
         </label>
@@ -2006,7 +2023,19 @@ function workspaceHTML() {
       </div>
     </div>
 
-    <!-- TECHDRAW 2D SHEET RENDER BOX -->
+    <!-- SUB-PANEL 7: ASSISTENTE CAD AI -->
+    <div class="v3-subpanel" data-cad-panel="prompt">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:12px;">
+        <h3 style="margin-top:0;color:#38bdf8;font-size:14px;font-weight:800;">🤖 Prompt do Assistente de Engenharia CAD AI</h3>
+        <p style="font-size:11px;color:#cbd5e1;line-height:1.5;margin-bottom:8px;">Copie as instruções otimizadas para geração de scripts e geometrias parametricas no Google AI Studio:</p>
+        <textarea id="v3-cad-prompt-textarea" style="width:100%;height:130px;background:#030712;color:#38bdf8;border:1px solid #1f2937;border-radius:8px;padding:8px;font-family:monospace;font-size:10px;resize:none;" readonly>Crie um script Three.js em JavaScript para gerar um chassi tubular de veículo em CAD com tubos sem costura S355 Ø32mm, suporte de suspensão duplo A, suporte de motor V8 e aerofólio com perfil NACA 0012.</textarea>
+        <button id="v3-btn-copy-cad-prompt" style="background:#0284c7;color:#fff;font-weight:700;padding:8px;border-radius:6px;width:100%;margin-top:6px;font-size:11px;border:1px solid #38bdf8;cursor:pointer;">
+          📋 Copiar Prompt do Assistente
+        </button>
+      </div>
+    </div>
+
+    <!-- TECHDRAW 2D RENDER BOX -->
     <div id="v3-cad-techdraw-box" style="margin-top:12px;display:none;border:1px dashed #0284c7;border-radius:8px;padding:10px;background:#030712;">
       <h4 style="margin:0 0 6px;color:#38bdf8;font-size:11px;">Projeção Ortográfica 2D (Prancha A3 Technical Drawing Sheet):</h4>
       <div id="v3-cad-techdraw-render" style="width:100%;height:170px;background:#000;border:1px solid #1f2937;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:10px;">
@@ -2016,48 +2045,139 @@ function workspaceHTML() {
   </section>
 
   <section data-v3-page="validation" class="v3-page">
-    <h2>Validação Estrutural (FEA) e Aerodinâmica (CFD)</h2>
-    <p>Simulações avançadas de engenharia para análise de rigidez torcional do chassi, tensões de Von Mises e túnel de vento aerodinâmico.</p>
-
-    <!-- STATUS BADGE -->
-    <div style="border:1px solid #a855f7;border-radius:10px;padding:8px 12px;background:rgba(168,85,247,0.08);margin-bottom:12px;">
-      <strong style="color:#e9d5ff;font-size:12px;">🔬 Solucionador Numérico FEA & CFD Ativo</strong>
-      <span style="display:block;color:#c084fc;font-size:9.5px;margin-top:2px;">Cálculo matricial de rigidez do chassi e vetorização de escoamento de fluidos em tempo real.</span>
+    <!-- VALIDATION TOP HEADER -->
+    <div style="background:#090d16;border:1px solid #1e293b;border-radius:10px;padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="background:#8b5cf6;color:#fff;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:0.05em;">ESTÚDIO DE SIMULAÇÃO & VALIDAÇÃO VEICULAR</span>
+        <strong style="color:#f8fafc;font-size:13px;">🔬 Solucionador FEA / CFD / Dinâmica</strong>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="color:#4ade80;font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px;">
+          <span style="width:7px;height:7px;background:#4ade80;border-radius:50%;display:inline-block;box-shadow:0 0 8px #4ade80;"></span> Solucionador Ativo
+        </span>
+      </div>
     </div>
 
     <!-- SUB-NAVIGATION WORKFLOW TABS FOR VALIDATION PAGE -->
     <div class="v3-subnav" id="v3-val-subnav">
-      <button class="v3-subnav-btn active" data-val-tab="fea">🔬 1. Análise FEA</button>
-      <button class="v3-subnav-btn" data-val-tab="heatmap">🔴 2. Heatmap 3D</button>
-      <button class="v3-subnav-btn" data-val-tab="cfd">🌬️ 3. Túnel de Vento CFD</button>
-      <button class="v3-subnav-btn" data-val-tab="streamlines">🌊 4. Fluxo de Ar 3D</button>
-      <button class="v3-subnav-btn" data-val-tab="report">📄 5. Relatório Técnico</button>
+      <button class="v3-subnav-btn active" data-val-tab="dynamics">🏎️ 1. Dinâmica Veicular</button>
+      <button class="v3-subnav-btn" data-val-tab="aero">🌬️ 2. Aerodinâmica CFD</button>
+      <button class="v3-subnav-btn" data-val-tab="fea">⚡ 3. Análise Estrutural FEA</button>
+      <button class="v3-subnav-btn" data-val-tab="heatmap">🔴 4. Heatmap Von Mises 3D</button>
+      <button class="v3-subnav-btn" data-val-tab="pressure">🌊 5. Distribuição de Pressão</button>
+      <button class="v3-subnav-btn" data-val-tab="report">📄 6. Relatório Técnico</button>
     </div>
 
-    <!-- SUB-PANEL 1: FEA ANALYSIS -->
-    <div class="v3-subpanel active" data-val-panel="fea">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">1. Análise Estrutural FEA do Chassi</h3>
+    <!-- SUB-PANEL 1: VEHICLE DYNAMICS & SUSPENSION -->
+    <div class="v3-subpanel active" data-val-panel="dynamics">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:14px;">
+        <h3 style="margin:0 0 10px;color:#38bdf8;font-size:15px;font-weight:800;">🏎️ Análise de Dinâmica Veicular & Suspensão</h3>
+        <p style="font-size:11.5px;color:#94a3b8;margin-bottom:12px;">Cálculo de centro de rolagem, transferência de carga dinâmica, aceleração lateral e comportamento dinâmico.</p>
+
+        <div class="v3-grid two">
+          <label class="v3-control">Peso Total do Veículo (kg)<input id="v3-dyn-weight" type="number" step="10" value="850"></label>
+          <label class="v3-control">Distribuição Diant/Tras (%)<input id="v3-dyn-bias" type="number" step="1" value="45"></label>
+        </div>
+        <div class="v3-grid two" style="margin-top:6px;">
+          <label class="v3-control">Taxa de Mola K (N/mm)<input id="v3-dyn-spring" type="number" step="5" value="45"></label>
+          <label class="v3-control">Amortecimento C (N·s/m)<input id="v3-dyn-damp" type="number" step="100" value="2200"></label>
+        </div>
+        <div class="v3-grid two" style="margin-top:6px;">
+          <label class="v3-control">Altura do Centro de Rolagem (mm)<input id="v3-dyn-roll-height" type="number" step="10" value="120"></label>
+          <label class="v3-control">Aceleração Lateral G-Force (g)<input id="v3-dyn-gforce" type="number" step="0.1" value="1.4"></label>
+        </div>
+
+        <button id="v3-dyn-run-simulation" style="width:100%;margin-top:10px;padding:10px;background:#0284c7;color:#fff;border:1px solid #38bdf8;border-radius:8px;font-weight:700;cursor:pointer;">
+          🏎️ Calcular Dinâmica Veicular & Transferência de Carga
+        </button>
+
+        <div id="v3-dyn-results-card" style="margin-top:12px;border:1px solid #0284c7;border-radius:10px;padding:12px;background:#082f49;">
+          <h4 style="margin:0 0 8px;color:#38bdf8;font-size:12px;font-weight:800;">📊 Parâmetros de Dinâmica Calculados:</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;color:#e0f2fe;">
+            <div>Ângulo de Rolagem em Curva: <strong id="v3-dyn-res-roll" style="color:#facc15;">2.15°</strong></div>
+            <div>Pitch em Frenagem: <strong id="v3-dyn-res-pitch" style="color:#f87171;">1.40°</strong></div>
+            <div>Transferência de Carga Lat.: <strong id="v3-dyn-res-transfer" style="color:#38bdf8;">198 kg</strong></div>
+            <div>Frequência Natural: <strong id="v3-dyn-res-freq" style="color:#4ade80;">1.85 Hz</strong></div>
+            <div>Curso de Suspensão Usado: <strong id="v3-dyn-res-travel" style="color:#a78bfa;">38 mm</strong></div>
+            <div>Equilíbrio Dinâmico: <strong id="v3-dyn-res-balance" style="color:#4ade80;">Neutro (Aprovado)</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUB-PANEL 2: CFD AERODYNAMICS & WIND TUNNEL -->
+    <div class="v3-subpanel" data-val-panel="aero">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:14px;">
+        <h3 style="margin:0 0 10px;color:#22d3ee;font-size:15px;font-weight:800;">🌬️ Simulação Aerodinâmica CFD & Túnel de Vento Virtual</h3>
+        <p style="font-size:11.5px;color:#94a3b8;margin-bottom:12px;">Simulação de campos de pressão, arrasto e sustentação negativa com linhas de fluxo 3D.</p>
+
+        <div class="v3-grid two">
+          <label class="v3-control">Velocidade do Vento (km/h)<input id="v3-cfd-speed" type="number" step="10" value="120"></label>
+          <label class="v3-control">Ângulo de Ataque (°)<input id="v3-cfd-angle" type="number" step="0.5" value="2.5"></label>
+        </div>
+
+        <div class="v3-grid two" style="margin-top:8px;">
+          <button id="v3-cfd-run-simulation" style="padding:10px;background:#06b6d4;color:#083344;border:1px solid #22d3ee;border-radius:8px;font-weight:700;cursor:pointer;">
+            🌬️ Iniciar Túnel de Vento Virtual (CFD)
+          </button>
+          <button id="v3-cfd-show-streamlines" style="padding:10px;background:#0284c7;color:#fff;border:1px solid #38bdf8;border-radius:8px;font-weight:700;cursor:pointer;">
+            🌊 Mostrar Linhas de Fluxo 3D (Streamlines)
+          </button>
+        </div>
+
+        <div style="margin-top:8px;">
+          <button id="v3-cfd-clear-streamlines" style="padding:6px 12px;background:#1e293b;color:#94a3b8;border:1px solid #334155;border-radius:6px;font-size:11px;cursor:pointer;">
+            ❌ Remov. Linhas de Fluxo
+          </button>
+        </div>
+
+        <div id="v3-cfd-results-card" style="margin-top:12px;display:none;border:1px solid #06b6d4;border-radius:10px;padding:12px;background:#083344;">
+          <h4 style="margin:0 0 8px;color:#67e8f9;font-size:12px;font-weight:800;">📊 Métricas Aerodinâmicas Obtidas:</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;color:#cffaff;">
+            <div>Coeficiente de Arrasto (Cd): <strong id="v3-cfd-res-cd" style="color:#facc15;">0.31</strong></div>
+            <div>Força de Arrasto (Fd): <strong id="v3-cfd-res-fd" style="color:#fb923c;">210 N</strong></div>
+            <div>Sustentação Negativa (Downforce Fz): <strong id="v3-cfd-res-fz" style="color:#38bdf8;">480 N</strong></div>
+            <div>Balanço Aero (Diant/Tras): <strong id="v3-cfd-res-balance" style="color:#4ade80;">45% / 55%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUB-PANEL 3: FEA STRUCTURAL SOLVER -->
+    <div class="v3-subpanel" data-val-panel="fea">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:14px;">
+        <h3 style="margin:0 0 10px;color:#c084fc;font-size:15px;font-weight:800;">⚡ Solucionador de Análise Estrutural FEA (Finite Element Analysis)</h3>
+        <p style="font-size:11.5px;color:#94a3b8;margin-bottom:12px;">Cálculo de rigidez torcional, distribuições de tensões von Mises e deflexão elástica sob cargas dinâmicas.</p>
+
         <div class="v3-grid two">
           <label class="v3-control">Torção Aplicada (Nm)<input id="v3-fea-torsion" type="number" step="100" value="1500"></label>
-          <label class="v3-control">Carga Flexional (N)<input id="v3-fea-load" type="number" step="100" value="3500"></label>
+          <label class="v3-control">Carga Flexional Directa (N)<input id="v3-fea-load" type="number" step="100" value="3500"></label>
         </div>
-        <label class="v3-control">Material do Chassi
-          <select id="v3-fea-material">
-            <option value="chromoly">Aço Cromo-Molibdênio (4130 Chromoly) - E=205 GPa</option>
-            <option value="steel1020">Aço Carbono SAE 1020 - E=200 GPa</option>
-            <option value="alu6061">Alumínio 6061-T6 - E=68.9 GPa</option>
-            <option value="carbon">Fibra de Carbono Monocoque - E=150 GPa</option>
-          </select>
-        </label>
+        <div class="v3-grid two" style="margin-top:6px;">
+          <label class="v3-control">Material
+            <select id="v3-fea-material">
+              <option value="chromoly">Aço Cromo-Molibdênio (4130 Chromoly) - E=205 GPa</option>
+              <option value="steel1020">Aço Carbono SAE 1020 - E=200 GPa</option>
+              <option value="alu6061">Alumínio 6061-T6 - E=68.9 GPa</option>
+              <option value="carbon">Fibra de Carbono Monocoque - E=150 GPa</option>
+            </select>
+          </label>
+          <label class="v3-control">Densidade da Malha FEA
+            <select id="v3-fea-mesh-density">
+              <option value="adaptive">Adaptativa Refinada (184.250 Elementos Tetraédricos)</option>
+              <option value="fine">Fina (120.000 Elementos Tetraédricos)</option>
+              <option value="medium">Média (45.000 Elementos Tetraédricos)</option>
+            </select>
+          </label>
+        </div>
 
-        <button id="v3-fea-run-simulation" style="width:100%;margin-top:6px;padding:9px;background:#8b5cf6;color:#fff;border-color:#a78bfa;font-weight:700;">
+        <button id="v3-fea-run-simulation" style="width:100%;margin-top:10px;padding:10px;background:#8b5cf6;color:#fff;border:1px solid #a78bfa;border-radius:8px;font-weight:700;cursor:pointer;">
           🔬 Executar Análise Estrutural FEA (Tensões e Torção)
         </button>
 
-        <div id="v3-fea-results-card" style="margin-top:10px;display:none;border:1px solid #8b5cf6;border-radius:10px;padding:10px;background:#1e1b4b;">
-          <h4 style="margin:0 0 6px;color:#c4b5fd;font-size:11.5px;">Resultados FEA do Chassi:</h4>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:10px;color:#e0e0ff;">
+        <div id="v3-fea-results-card" style="margin-top:12px;display:none;border:1px solid #8b5cf6;border-radius:10px;padding:12px;background:#1e1b4b;">
+          <h4 style="margin:0 0 8px;color:#c4b5fd;font-size:12px;font-weight:800;">📊 Resultados da Análise FEA:</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;color:#e0e0ff;">
             <div>Rigidez Torcional: <strong id="v3-fea-res-torsion" style="color:#38bdf8;">1.850 Nm/°</strong></div>
             <div>Tensão Máx. Von Mises: <strong id="v3-fea-res-stress" style="color:#f43f5e;">245 MPa</strong></div>
             <div>Fator de Segurança (FS): <strong id="v3-fea-res-fs" style="color:#4ade80;">1.84 (Aprovado)</strong></div>
@@ -2067,61 +2187,58 @@ function workspaceHTML() {
       </div>
     </div>
 
-    <!-- SUB-PANEL 2: Von Mises Heatmap 3D -->
+    <!-- SUB-PANEL 4: VON MISES HEATMAP 3D -->
     <div class="v3-subpanel" data-val-panel="heatmap">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">2. Mapeamento Térmico de Tensão (Von Mises Heatmap 3D)</h3>
-        <p style="font-size:11px;color:#94a3b8;margin-bottom:8px;">Aplica um espectro de gradiente térmico de tensão (do azul ao vermelho) nos vértices da malha selecionada.</p>
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:14px;">
+        <h3 style="margin:0 0 10px;color:#f43f5e;font-size:15px;font-weight:800;">🔴 Mapeamento Térmico de Tensão (Von Mises Heatmap 3D)</h3>
+        <p style="font-size:11.5px;color:#cbd5e1;margin-bottom:12px;line-height:1.5;">
+          Aplica um gradiente de cores térmico (Azul = 0 MPa até Vermelho = Tensão Crítica) diretamente nos vértices do modelo 3D na cena.
+        </p>
         <div class="v3-grid two">
-          <button id="v3-fea-show-heatmap" style="background:#0284c7;color:#fff;">🔴 Visualizar Heatmap de Tensões 3D</button>
-          <button id="v3-fea-clear-heatmap">⚪ Limpar Mapeamento</button>
+          <button id="v3-fea-show-heatmap" style="padding:10px;background:#e11d48;color:#fff;border:1px solid #fb7185;border-radius:8px;font-weight:700;cursor:pointer;">
+            🔴 Visualizar Heatmap de Tensões 3D
+          </button>
+          <button id="v3-fea-clear-heatmap" style="padding:10px;background:#1e293b;color:#f8fafc;border:1px solid #334155;border-radius:8px;font-weight:700;cursor:pointer;">
+            ⚪ Limpar Mapeamento
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- SUB-PANEL 3: CFD Wind Tunnel -->
-    <div class="v3-subpanel" data-val-panel="cfd">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">3. Simulação Aerodinâmica CFD (Túnel de Vento)</h3>
-        <div class="v3-grid two">
-          <label class="v3-control">Velocidade do Ar (km/h)<input id="v3-cfd-speed" type="number" step="10" value="120"></label>
-          <label class="v3-control">Ângulo de Ataque (°)<input id="v3-cfd-angle" type="number" step="0.5" value="2.5"></label>
+    <!-- SUB-PANEL 5: DISTRIBUIÇÃO DE PRESSÃO -->
+    <div class="v3-subpanel" data-val-panel="pressure">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:14px;">
+        <h3 style="margin:0 0 10px;color:#38bdf8;font-size:15px;font-weight:800;">🌊 Distribuição de Pressão Superficial & Escoamento</h3>
+        <p style="font-size:11.5px;color:#cbd5e1;line-height:1.5;margin-bottom:12px;">
+          Análise de pressão estática e dinâmica na superfície do veículo e aerofólio (Extradorso vs Intradorso):
+        </p>
+        
+        <div style="background:#030712;border:1px solid #1f2937;border-radius:8px;padding:10px;margin-bottom:10px;">
+          <svg width="100%" height="90" viewBox="0 0 300 70">
+            <path d="M 20 35 Q 120 10 280 35 Q 150 50 20 35 Z" fill="#0284c7" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1.8"/>
+            <path d="M 10 20 Q 120 -5 290 20" fill="none" stroke="#22d3ee" stroke-width="1" stroke-dasharray="3,3"/>
+            <path d="M 10 50 Q 120 65 290 50" fill="none" stroke="#f43f5e" stroke-width="1" stroke-dasharray="3,3"/>
+            <text x="110" y="25" fill="#38bdf8" font-size="9" font-weight="bold">Extradorso (-Cp)</text>
+            <text x="110" y="48" fill="#f43f5e" font-size="9" font-weight="bold">Intradorso (+Cp)</text>
+          </svg>
         </div>
 
-        <button id="v3-cfd-run-simulation" style="width:100%;margin-top:6px;padding:9px;background:#06b6d4;color:#083344;border-color:#22d3ee;font-weight:700;">
-          🌬️ Iniciar Túnel de Vento Virtual (CFD)
-        </button>
-
-        <div id="v3-cfd-results-card" style="margin-top:10px;display:none;border:1px solid #06b6d4;border-radius:10px;padding:10px;background:#083344;">
-          <h4 style="margin:0 0 6px;color:#67e8f9;font-size:11.5px;">Métricas Aerodinâmicas CFD:</h4>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:10px;color:#cffaff;">
-            <div>Coef. Arrasto (Cd): <strong id="v3-cfd-res-cd" style="color:#facc15;">0.31</strong></div>
-            <div>Força Arrasto (Fd): <strong id="v3-cfd-res-fd" style="color:#fb923c;">210 N</strong></div>
-            <div>Downforce (Fz): <strong id="v3-cfd-res-fz" style="color:#38bdf8;">480 N</strong></div>
-            <div>Balanço Aero D/T: <strong id="v3-cfd-res-balance" style="color:#4ade80;">45% / 55%</strong></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SUB-PANEL 4: Streamlines 3D -->
-    <div class="v3-subpanel" data-val-panel="streamlines">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">4. Visualização 3D do Fluxo de Ar (Streamlines)</h3>
-        <p style="font-size:11px;color:#94a3b8;margin-bottom:8px;">Gera trajetórias vetoriais de escoamento ao redor da carroceria/modelo.</p>
-        <div class="v3-grid two">
-          <button id="v3-cfd-show-streamlines" style="background:#0284c7;color:#fff;">🌊 Mostrar Linhas de Fluxo 3D</button>
-          <button id="v3-cfd-clear-streamlines">❌ Ocultar Fluxo de Ar</button>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;color:#cbd5e1;">
+          <div style="background:#1e293b;padding:8px;border-radius:6px;">Pressão Estágio Frontal: <strong style="color:#38bdf8;">1.240 Pa</strong></div>
+          <div style="background:#1e293b;padding:8px;border-radius:6px;">Ponto de Estagnação: <strong style="color:#f43f5e;">x=0.04m</strong></div>
+          <div style="background:#1e293b;padding:8px;border-radius:6px;">Espessura Camada Limite: <strong style="color:#facc15;">3.2 mm</strong></div>
+          <div style="background:#1e293b;padding:8px;border-radius:6px;">Vórtice de Ponta de Asa: <strong style="color:#4ade80;">Atenuado</strong></div>
         </div>
       </div>
     </div>
 
-    <!-- SUB-PANEL 5: Technical Report -->
+    <!-- SUB-PANEL 6: TECHNICAL REPORT -->
     <div class="v3-subpanel" data-val-panel="report">
-      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:10px;">
-        <h3 style="margin-top:0;">5. Relatório Técnico de Engenharia</h3>
-        <p style="font-size:11px;color:#94a3b8;margin-bottom:8px;">Gere um relatório técnico formal consolidando todos os dados FEA/CFD e especificações dos componentes.</p>
-        <button id="v3-export-engineering-report" style="width:100%;padding:9px;background:#10b981;color:#022c22;border-color:#34d399;font-weight:700;">
+      <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:14px;">
+        <h3 style="margin:0 0 10px;color:#34d399;font-size:15px;font-weight:800;">📄 Relatório Técnico de Engenharia & Laudo de Homologação</h3>
+        <p style="font-size:11.5px;color:#94a3b8;margin-bottom:12px;">Exportação do laudo formal contendo métricas de FEA, CFD, Dinâmica Veicular e aprovação de segurança.</p>
+
+        <button id="v3-export-engineering-report" style="width:100%;padding:10px;background:#10b981;color:#022c22;border:1px solid #34d399;border-radius:8px;font-weight:700;cursor:pointer;">
           📄 Gerar e Baixar Relatório Técnico de Engenharia (TXT)
         </button>
       </div>
@@ -4559,26 +4676,107 @@ function installWorkspaceUI(engine) {
     if (!container) return;
     const rootGroup = engine.editorRoot || engine.scene;
     const objects = rootGroup.children.filter(o => o.name && !o.isLight && !o.isCamera && o.type !== 'GridHelper');
+    
+    let html = `
+    <div class="v3-tree-root" style="font-family:Segoe UI,sans-serif;font-size:11px;user-select:none;">
+      <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;background:#1e293b;border-radius:6px;color:#38bdf8;font-weight:700;margin-bottom:6px;border:1px solid #334155;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        PROJETO_MODELAGEM_3D.cad
+        <small style="color:#94a3b8;font-weight:normal;margin-left:auto;">Montagem Principal</small>
+      </div>
+      
+      <div style="margin-left:8px;border-left:1px dashed #334155;padding-left:8px;margin-bottom:6px;">
+        <div style="color:#64748b;font-weight:700;font-size:10px;margin:3px 0;letter-spacing:0.04em;">📐 PLANOS DE REFERÊNCIA & ORIGEM</div>
+        <div style="color:#94a3b8;font-size:10px;padding:2px 0;display:flex;align-items:center;gap:5px;">📐 Plano Frontal XY</div>
+        <div style="color:#94a3b8;font-size:10px;padding:2px 0;display:flex;align-items:center;gap:5px;">📐 Plano Superior XZ (Base)</div>
+        <div style="color:#94a3b8;font-size:10px;padding:2px 0;display:flex;align-items:center;gap:5px;">📐 Plano Lateral YZ</div>
+        <div style="color:#94a3b8;font-size:10px;padding:2px 0;display:flex;align-items:center;gap:5px;">🎯 Origem Coordenada (0.00, 0.00, 0.00)</div>
+      </div>
+
+      <div style="margin-left:8px;border-left:1px dashed #0284c7;padding-left:8px;">
+        <div style="color:#38bdf8;font-weight:700;font-size:10px;margin:6px 0;letter-spacing:0.04em;display:flex;align-items:center;justify-content:space-between;">
+          <span>📦 RECURSOS PARAMÉTRICOS & CORPOS 3D (${objects.length})</span>
+        </div>
+    `;
+
     if (!objects.length) {
-      container.innerHTML = `<p style="font-size:10.5px;color:#8f98b0;margin:0;">Nenhum componente cadastrado na cena.</p>`;
-      return;
+      html += `<p style="font-size:10.5px;color:#8f98b0;margin:6px 0;">Nenhum componente cadastrado na cena. Crie um cubo, perfil ou chassi para visualizar a árvore de recursos.</p>`;
+    } else {
+      html += objects.map((obj, i) => {
+        const isSel = engine.selected === obj;
+        const isHidden = obj.visible === false;
+        const isSuppressed = obj.userData?.suppressed === true;
+        const name = obj.name || 'Componente ' + (i + 1);
+
+        return `
+        <div class="v3-tree-item ${isSel ? 'selected' : ''}" data-cad-tree-id="${i}" style="margin-bottom:5px;border:1px solid ${isSel ? '#38bdf8' : '#1e293b'};border-radius:6px;background:${isSel ? '#0f172a' : '#030712'};overflow:hidden;transition:all 0.12s ease;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 8px;cursor:pointer;">
+            <div style="display:flex;align-items:center;gap:6px;overflow:hidden;text-overflow:ellipsis;">
+              <span style="font-size:9px;color:#38bdf8;">▼</span>
+              <span style="font-size:11px;font-weight:700;color:${isSuppressed ? '#64748b' : isSel ? '#38bdf8' : '#e2e8f0'};text-decoration:${isSuppressed ? 'line-through' : 'none'};">
+                ${name}
+              </span>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;" onclick="event.stopPropagation();">
+              <button class="v3-tree-vis-btn" data-tree-vis="${i}" style="background:none;border:none;color:${isHidden ? '#64748b' : '#38bdf8'};cursor:pointer;font-size:11px;padding:2px 4px;" title="Alternar Visibilidade">
+                ${isHidden ? '🙈' : '👁️'}
+              </button>
+              <button class="v3-tree-sup-btn" data-tree-sup="${i}" style="background:none;border:none;color:${isSuppressed ? '#f43f5e' : '#a78bfa'};cursor:pointer;font-size:11px;padding:2px 4px;" title="Suprimir / Ativar Recurso">
+                ${isSuppressed ? '🔒' : '🔓'}
+              </button>
+            </div>
+          </div>
+
+          <div style="padding:4px 8px 6px 20px;background:#090d16;border-top:1px solid #1e293b;font-size:9.5px;color:#94a3b8;display:flex;flex-direction:column;gap:2px;">
+            <div>✏️ Esboço Perfil 2D (Sketch Origin)</div>
+            <div>📦 Operação B-Rep (${obj.type})</div>
+            <div>🎨 Material: ${obj.material?.name || obj.userData?.materialPreset || 'Aço S355 / Padrão'}</div>
+          </div>
+        </div>`;
+      }).join('');
     }
 
-    container.innerHTML = objects.map((obj, i) => {
-      const isSel = engine.selected === obj;
-      return `<div class="v3-item ${isSel ? 'selected' : ''}" data-cad-index="${i}" style="display:flex;align-items:center;justify-content:space-between;padding:4px 8px;margin-bottom:2px;border-radius:4px;cursor:pointer;background:${isSel ? '#1e293b' : 'transparent'};color:${isSel ? '#38bdf8' : '#e2e8f0'};font-size:11px;">
-        <span style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;">${obj.name || 'Componente ' + (i + 1)}</span>
-        <span style="font-size:10px;opacity:0.7;">${obj.type}</span>
-      </div>`;
-    }).join('');
+    html += `</div></div>`;
+    container.innerHTML = html;
 
-    container.querySelectorAll('[data-cad-index]').forEach((item) => {
+    container.querySelectorAll('[data-cad-tree-id]').forEach(item => {
       item.addEventListener('click', () => {
-        const idx = parseInt(item.dataset.cadIndex, 10);
+        const idx = parseInt(item.dataset.cadTreeId, 10);
         const target = objects[idx];
         if (target) {
           engine.select(target);
           updateCadInputsFromSelection();
+          renderCadPartTree();
+        }
+      });
+    });
+
+    container.querySelectorAll('[data-tree-vis]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = parseInt(btn.dataset.treeVis, 10);
+        const target = objects[idx];
+        if (target) {
+          target.visible = !target.visible;
+          engine.emit('scenechange');
+          renderCadPartTree();
+          toast(engine, target.visible ? 'Componente exibido no 3D.' : 'Componente ocultado.');
+        }
+      });
+    });
+
+    container.querySelectorAll('[data-tree-sup]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = parseInt(btn.dataset.treeSup, 10);
+        const target = objects[idx];
+        if (target) {
+          target.userData = target.userData || {};
+          target.userData.suppressed = !target.userData.suppressed;
+          target.visible = !target.userData.suppressed;
+          engine.emit('scenechange');
+          renderCadPartTree();
+          toast(engine, target.userData.suppressed ? 'Recurso suprimido no modelo.' : 'Recurso reativado.');
         }
       });
     });
@@ -4707,9 +4905,40 @@ function installWorkspaceUI(engine) {
     toast(engine, 'Prancha de Desenho Técnico 2D (TechDraw) gerada com sucesso!');
   });
 
-  // FEA Structural & CFD Aerodynamic Validation
+  // FEA Structural, Vehicle Dynamics & CFD Aerodynamic Validation
   let currentHeatmapMesh = null;
   let currentStreamlinesGroup = null;
+
+  panel.querySelector('#v3-dyn-run-simulation')?.addEventListener('click', () => {
+    try {
+      const weight = parseFloat(panel.querySelector('#v3-dyn-weight')?.value || 850);
+      const bias = parseFloat(panel.querySelector('#v3-dyn-bias')?.value || 45);
+      const spring = parseFloat(panel.querySelector('#v3-dyn-spring')?.value || 45);
+      const damp = parseFloat(panel.querySelector('#v3-dyn-damp')?.value || 2200);
+      const rollH = parseFloat(panel.querySelector('#v3-dyn-roll-height')?.value || 120);
+      const gforce = parseFloat(panel.querySelector('#v3-dyn-gforce')?.value || 1.4);
+
+      const rollDeg = ((weight * gforce * (rollH / 1000)) / (spring * 35)).toFixed(2);
+      const pitchDeg = ((weight * 0.8 * 0.25) / (spring * 40)).toFixed(2);
+      const transferKg = Math.round((weight * gforce * rollH) / 1000);
+      const freqHz = (Math.sqrt((spring * 1000) / (weight / 4)) / (2 * Math.PI)).toFixed(2);
+      const travelMm = Math.round((weight * gforce * 0.05) + 10);
+
+      const resCard = panel.querySelector('#v3-dyn-results-card');
+      if (resCard) {
+        resCard.style.display = 'block';
+        panel.querySelector('#v3-dyn-res-roll').textContent = `${rollDeg}°`;
+        panel.querySelector('#v3-dyn-res-pitch').textContent = `${pitchDeg}°`;
+        panel.querySelector('#v3-dyn-res-transfer').textContent = `${transferKg} kg`;
+        panel.querySelector('#v3-dyn-res-freq').textContent = `${freqHz} Hz`;
+        panel.querySelector('#v3-dyn-res-travel').textContent = `${travelMm} mm`;
+        const balElem = panel.querySelector('#v3-dyn-res-balance');
+        balElem.textContent = rollDeg <= 3.5 ? 'Neutro (Aprovado)' : 'Alerta de Rolagem Excessiva';
+        balElem.style.color = rollDeg <= 3.5 ? '#4ade80' : '#f87171';
+      }
+      toast(engine, `Dinâmica Veicular: Rolagem ${rollDeg}°, Transferência de carga ${transferKg}kg a ${gforce}G.`);
+    } catch (err) { toast(engine, err.message, true); }
+  });
 
   panel.querySelector('#v3-fea-run-simulation')?.addEventListener('click', () => {
     try {
@@ -4896,6 +5125,49 @@ function installWorkspaceUI(engine) {
     }
     toast(engine, `Restrição Geométrica "${names[constraint] || constraint}" aplicada aos elementos do Esboço!`);
   }));
+
+  // Copy Google AI Studio System Prompt Handler
+  panel.querySelector('#v3-btn-copy-cad-prompt')?.addEventListener('click', () => {
+    const textarea = panel.querySelector('#v3-cad-prompt-textarea');
+    if (textarea) {
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value).then(() => {
+        toast(engine, 'Prompt do Google AI Studio copiado com sucesso para a área de transferência!');
+      }).catch(() => {
+        document.execCommand('copy');
+        toast(engine, 'Prompt copiado para a área de transferência!');
+      });
+    }
+  });
+
+  // Toggle Timeline and Inspector Buttons (CAD Toolbar Icons)
+  panel.querySelector('#v3-cad-toggle-timeline')?.addEventListener('click', () => {
+    const timelineBtn = document.querySelector('#toggle-timeline-btn');
+    if (timelineBtn) {
+      timelineBtn.click();
+    } else {
+      const timelinePanel = document.querySelector('.timeline-panel') || document.querySelector('#timeline-panel') || document.querySelector('.timeline');
+      if (timelinePanel) {
+        const isHidden = timelinePanel.style.display === 'none';
+        timelinePanel.style.display = isHidden ? '' : 'none';
+        toast(engine, isHidden ? 'Linha do Tempo exibida.' : 'Linha do Tempo ocultada.');
+      }
+    }
+  });
+
+  panel.querySelector('#v3-cad-toggle-inspector')?.addEventListener('click', () => {
+    const inspectorBtn = document.querySelector('#toggle-inspector-btn');
+    if (inspectorBtn) {
+      inspectorBtn.click();
+    } else {
+      const rightPanel = document.querySelector('.right-panel') || document.querySelector('#right-panel');
+      if (rightPanel) {
+        const isHidden = rightPanel.style.display === 'none';
+        rightPanel.style.display = isHidden ? '' : 'none';
+        toast(engine, isHidden ? 'Inspetor de Propriedades exibido.' : 'Inspetor de Propriedades ocultado.');
+      }
+    }
+  });
 
   // CAD Sub-navigation Tabs Handler
   panel.querySelectorAll('[data-cad-tab]').forEach(btn => btn.addEventListener('click', () => {
@@ -5532,6 +5804,50 @@ function installCustomUIAndLegalHandlers(engine) {
     }
   }
 
+  // EDIT LOGIN & PROFILE MODAL LOGIC
+  const closeOnboardingBtn = document.querySelector('#close-onboarding-btn');
+  closeOnboardingBtn?.addEventListener('click', () => {
+    onboardingGate?.classList.add('hidden');
+    updateModalOverlayState();
+  });
+
+  function openLoginEditModal() {
+    if (!onboardingGate) return;
+    const savedName = localStorage.getItem('mn_user_name') || 'Micael Souz';
+    const savedEmail = localStorage.getItem('mn_user_email') || 'mnanimat@gmail.com';
+    const savedAge = localStorage.getItem('mn_user_age') || '18';
+    const savedCountry = localStorage.getItem('mn_user_country') || 'BR';
+
+    const userNameInput = document.querySelector('#onboarding-user-name');
+    const userEmailInput = document.querySelector('#onboarding-user-email');
+    if (userNameInput) userNameInput.value = savedName;
+    if (userEmailInput) userEmailInput.value = savedEmail;
+    if (ageInput) ageInput.value = savedAge;
+    if (countrySelect) countrySelect.value = savedCountry;
+
+    if (chkTerms) chkTerms.checked = true;
+    if (chkAge) chkAge.checked = true;
+
+    if (btnAcceptEnter) {
+      btnAcceptEnter.disabled = false;
+      btnAcceptEnter.textContent = '💾 Salvar Alterações de Login';
+      btnAcceptEnter.style.background = '#059669';
+      btnAcceptEnter.style.color = '#ffffff';
+      btnAcceptEnter.style.cursor = 'pointer';
+    }
+
+    updateAgeNotice();
+    onboardingGate.classList.remove('hidden');
+    updateModalOverlayState();
+  }
+
+  document.querySelectorAll('#edit-profile-btn, .open-login-action').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLoginEditModal();
+    });
+  });
+
   ageInput?.addEventListener('input', updateAgeNotice);
   countrySelect?.addEventListener('change', updateAgeNotice);
   chkTerms?.addEventListener('change', validateOnboardingGateForm);
@@ -5542,6 +5858,8 @@ function installCustomUIAndLegalHandlers(engine) {
     const country = countrySelect?.value || 'BR';
     const userName = document.querySelector('#onboarding-user-name')?.value || 'Micael Souz';
     const userEmail = document.querySelector('#onboarding-user-email')?.value || 'mnanimat@gmail.com';
+
+    const isFirstTime = localStorage.getItem('mn_compliance_v1') !== 'true';
 
     localStorage.setItem('mn_compliance_v1', 'true');
     localStorage.setItem('mn_user_age', age);
@@ -5557,17 +5875,19 @@ function installCustomUIAndLegalHandlers(engine) {
 
     onboardingGate?.classList.add('hidden');
     updateModalOverlayState();
-    toast(engine, `🔓 Login efetuado com sucesso! Bem-vindo(a), ${userName} (Idade: ${age} anos).`);
+    toast(engine, `🔓 Login atualizado com sucesso! Bem-vindo(a), ${userName}.`);
 
-    // Carregar a Personagem blocada na cena 3D ao concluir o login
-    setTimeout(() => {
-      const blockyBtn = document.querySelector('[data-load-character="blocky"], [data-character-preset="blocky"]');
-      if (blockyBtn) {
-        blockyBtn.click();
-      } else if (window.loadBundledCharacter) {
-        window.loadBundledCharacter('blocky', document.createElement('button'));
-      }
-    }, 100);
+    if (isFirstTime) {
+      // Carregar a Personagem blocada na cena 3D apenas na primeira vez
+      setTimeout(() => {
+        const blockyBtn = document.querySelector('[data-load-character="blocky"], [data-character-preset="blocky"]');
+        if (blockyBtn) {
+          blockyBtn.click();
+        } else if (window.loadBundledCharacter) {
+          window.loadBundledCharacter('blocky', document.createElement('button'));
+        }
+      }, 100);
+    }
   });
 
   // Restore logged in user badge on boot

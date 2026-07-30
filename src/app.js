@@ -129,6 +129,29 @@ $('#toggle-leftpanel-btn')?.addEventListener('click', (e) => {
 });
 $$('[data-view]').forEach(button => button.addEventListener('click', () => engine.setView(button.dataset.view)));
 
+// 3D View Navigation Cube Synchronizer
+function updateViewCube() {
+  const viewCube = $('#v3-view-cube');
+  if (!viewCube || !engine || !engine.camera || !engine.orbit) return;
+  const dir = engine.camera.position.clone().sub(engine.orbit.target).normalize();
+  const pitch = Math.asin(Math.max(-1, Math.min(1, dir.y)));
+  const yaw = Math.atan2(dir.x, dir.z);
+  const pitchDeg = (pitch * 180 / Math.PI).toFixed(1);
+  const yawDeg = (-yaw * 180 / Math.PI).toFixed(1);
+  viewCube.style.transform = `rotateX(${pitchDeg}deg) rotateY(${yawDeg}deg)`;
+}
+if (typeof engine.on === 'function') {
+  engine.on('camerachange', updateViewCube);
+  engine.on('render', updateViewCube);
+} else if (typeof engine.addEventListener === 'function') {
+  engine.addEventListener('camerachange', updateViewCube);
+  engine.addEventListener('render', updateViewCube);
+}
+$('#v3-cube-reset')?.addEventListener('click', () => {
+  engine.setView('iso');
+  toast('Câmera alinhada na visão Isométrica.');
+});
+
 $('#add-rig-btn')?.addEventListener('click', () => {
   engine.addRig();
   setTool('rotate');
@@ -735,7 +758,7 @@ function markSaved() {
 function updateDynamicFavicon() {
   const favicons = document.querySelectorAll('#mn-favicon, link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]');
   const brandLogos = document.querySelectorAll('#brand-logo-img, .brand-logo');
-  const defaultLogo = './src/assets/images/regenerated_image_1785264083389.webp';
+  const defaultLogo = './src/assets/images/regenerated_image_1785379781651.png';
 
   const selected = engine.selected;
   if (!selected) {

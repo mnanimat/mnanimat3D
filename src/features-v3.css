@@ -41,6 +41,9 @@ html[data-v3-workspace="scene"] .v3-workspace-panel:not(.open){display:none}
   html[data-v3-workspace]:not([data-v3-workspace="scene"]) .app-shell{
     grid-template-columns:var(--v3panel) minmax(0,1fr) var(--panel-right)!important;
   }
+  html[data-v3-workspace]:not([data-v3-workspace="scene"]) .app-shell.hide-right{
+    grid-template-columns:var(--v3panel) minmax(0,1fr) 0px!important;
+  }
   html[data-v3-workspace]:not([data-v3-workspace="scene"]) .workspace{
     margin-left:0!important;
     min-width:0!important;
