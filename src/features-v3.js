@@ -1746,7 +1746,7 @@ function workspaceHTML() {
       <button class="v3-subnav-btn" data-cad-tab="ops3d">📦 2. Operações 3D & Recursos</button>
       <button class="v3-subnav-btn" data-cad-tab="weldments">📐 3. Perfis Estruturais (Weldments)</button>
       <button class="v3-subnav-btn" data-cad-tab="components">⚙️ 4. Componentes Automotivos</button>
-      <button class="v3-subnav-btn" data-cad-tab="builder">🛠️ 5. Construtor Buggy (18 Estágios)</button>
+      <button class="v3-subnav-btn" data-cad-tab="builder">🛠️ 5. Construtor Sequencial (CrossKart - 18 Estágios)</button>
       <button class="v3-subnav-btn" data-cad-tab="tree">📂 6. Árvore de Peças & Transformação</button>
       <button class="v3-subnav-btn" data-cad-tab="prompt">🤖 7. Assistente CAD AI</button>
     </div>
@@ -1913,14 +1913,14 @@ function workspaceHTML() {
       </div>
     </div>
 
-    <!-- SUB-PANEL 5: BUGGY BUILDER 18 STAGES -->
+    <!-- SUB-PANEL 5: CROSSKART BUILDER 18 STAGES -->
     <div class="v3-subpanel" data-cad-panel="builder">
       <div style="background:#090d16;border:1px solid #10b981;border-radius:10px;padding:12px;">
-        <h3 style="margin-top:0;color:#6ee7b7;font-size:14px;font-weight:800;">🛠️ Construtor Sequencial (Buggy FX 1000 - 18 Estágios)</h3>
+        <h3 style="margin-top:0;color:#6ee7b7;font-size:14px;font-weight:800;">🛠️ Construtor Sequencial (CrossKart - 18 Estágios)</h3>
         <p style="font-size:11px;color:#a7f3d0;margin-bottom:8px;">Construção passo a passo com tubos sem costura S355, chapas dobradas S235 e coxins silent block.</p>
 
         <label class="v3-control">Selecione o Estágio de Montagem
-          <select id="v3-cad-buggy-stage">
+          <select id="v3-cad-crosskart-stage">
             <option value="1" selected>Estágio 1: Quadro Base Inferior (Main Bottom Frame 2305x710mm)</option>
             <option value="2">Estágio 2: Santo Antônio Principal (Main Rollbar Tube Ø40x2.0)</option>
             <option value="3">Estágio 3: Berço do Motor & Cobertura (Engine Department Stage 3)</option>
@@ -1949,7 +1949,7 @@ function workspaceHTML() {
 
         <div class="v3-grid two" style="margin-bottom:8px;">
           <button id="v3-cad-build-stage" style="background:#0284c7;color:#fff;font-weight:700;padding:8px;">🛠️ Gerar Estágio em 3D</button>
-          <button id="v3-cad-build-buggy-full" style="background:#10b981;color:#022c22;font-weight:700;padding:8px;">🏎️ Montar Buggy FX 1000 Completo</button>
+          <button id="v3-cad-build-crosskart-full" style="background:#10b981;color:#022c22;font-weight:700;padding:8px;">🏎️ Montar CrossKart Completo (18 Estágios)</button>
         </div>
 
         <div class="v3-grid two">
@@ -4157,9 +4157,9 @@ function installWorkspaceUI(engine) {
     return descriptions[stage] || { title: `Estágio ${stage}`, desc: "Estágio de fabricação do chassi tubular.", bom: "Verifique o manual técnico." };
   }
 
-  function buildBuggyStageCAD(engine, stageNum) {
+  function buildCrosskartStageCAD(engine, stageNum) {
     const group = new THREE.Group();
-    group.name = engine.uniqueName(`Buggy Crosskart - Estagio ${stageNum} CAD`);
+    group.name = engine.uniqueName(`CrossKart - Estagio ${stageNum} CAD`);
 
     const tubeMatRed = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.8, roughness: 0.2 });
     const tubeMatSteel = new THREE.MeshStandardMaterial({ color: 0x475569, metalness: 0.85, roughness: 0.3 });
@@ -4226,13 +4226,13 @@ function installWorkspaceUI(engine) {
     engine.editorRoot.add(group);
     engine.select(group);
     engine.emit('scenechange');
-    toast(engine, `Estágio ${stageNum} do Buggy Crosskart gerado em 3D!`);
+    toast(engine, `Estágio ${stageNum} do CrossKart gerado em 3D!`);
   }
 
-  function buildFullBuggyFX1000(engine) {
-    const buggyGroup = new THREE.Group();
-    buggyGroup.name = engine.uniqueName('Buggy Crosskart FX 1000 (Completo 18 Estagios)');
-    buggyGroup.userData.editable = true;
+  function buildFullCrosskart(engine) {
+    const crosskartGroup = new THREE.Group();
+    crosskartGroup.name = engine.uniqueName('CrossKart (Completo 18 Estagios)');
+    crosskartGroup.userData.editable = true;
 
     const frameMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.8, roughness: 0.2 });
     const steelMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.85, roughness: 0.3 });
@@ -4241,39 +4241,39 @@ function installWorkspaceUI(engine) {
 
     // 1. Bottom Chassis Frame
     const baseL1 = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 2.8, 16), frameMat);
-    baseL1.rotation.z = Math.PI / 2; baseL1.position.set(0, 0.1, -0.4); buggyGroup.add(baseL1);
-    const baseL2 = baseL1.clone(); baseL2.position.set(0, 0.1, 0.4); buggyGroup.add(baseL2);
+    baseL1.rotation.z = Math.PI / 2; baseL1.position.set(0, 0.1, -0.4); crosskartGroup.add(baseL1);
+    const baseL2 = baseL1.clone(); baseL2.position.set(0, 0.1, 0.4); crosskartGroup.add(baseL2);
 
     // 2. Roll Cage
     const cage1 = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.2, 16), frameMat);
-    cage1.position.set(-0.2, 0.7, -0.4); cage1.rotation.z = -0.2; buggyGroup.add(cage1);
-    const cage2 = cage1.clone(); cage2.position.set(-0.2, 0.7, 0.4); buggyGroup.add(cage2);
+    cage1.position.set(-0.2, 0.7, -0.4); cage1.rotation.z = -0.2; crosskartGroup.add(cage1);
+    const cage2 = cage1.clone(); cage2.position.set(-0.2, 0.7, 0.4); crosskartGroup.add(cage2);
 
     const roofBar = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.8, 16), frameMat);
-    roofBar.rotation.x = Math.PI / 2; roofBar.position.set(-0.3, 1.3, 0); buggyGroup.add(roofBar);
+    roofBar.rotation.x = Math.PI / 2; roofBar.position.set(-0.3, 1.3, 0); crosskartGroup.add(roofBar);
 
     // 3. Racing Seat
     const seat = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.65, 0.4), seatMat);
-    seat.position.set(-0.1, 0.45, 0); buggyGroup.add(seat);
+    seat.position.set(-0.1, 0.45, 0); crosskartGroup.add(seat);
 
     // 4. Wheels & Suspension
     for (let pos of [[0.9, 0.2, 0.75], [0.9, 0.2, -0.75], [-1.1, 0.25, 0.75], [-1.1, 0.25, -0.75]]) {
       const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.22, 24), steelMat);
-      wheel.rotation.x = Math.PI / 2; wheel.position.set(...pos); buggyGroup.add(wheel);
+      wheel.rotation.x = Math.PI / 2; wheel.position.set(...pos); crosskartGroup.add(wheel);
     }
 
     // 5. Rear Wing
     const wing = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.04, 1.1), wingMat);
-    wing.position.set(-1.25, 1.15, 0); buggyGroup.add(wing);
+    wing.position.set(-1.25, 1.15, 0); crosskartGroup.add(wing);
 
-    engine.editorRoot.add(buggyGroup);
-    engine.select(buggyGroup);
+    engine.editorRoot.add(crosskartGroup);
+    engine.select(crosskartGroup);
     engine.emit('scenechange');
-    toast(engine, '🏎️ Chassi Buggy Crosskart FX 1000 Montado em 3D com Sucesso!');
+    toast(engine, '🏎️ Chassi CrossKart Montado em 3D com Sucesso!');
   }
 
-  function exportBuggyBOM(engine) {
-    const stageSel = panel.querySelector('#v3-cad-buggy-stage');
+  function exportCrosskartBOM(engine) {
+    const stageSel = panel.querySelector('#v3-cad-crosskart-stage');
     const stageNum = stageSel ? stageSel.value : '1';
     const info = getStageDescription(stageNum);
 
@@ -4305,7 +4305,7 @@ function installWorkspaceUI(engine) {
     toast(engine, 'Componente de Chapa Cortada S235 gerado!');
   }
 
-  // Vehicle Component & Buggy Stage CAD events
+  // Vehicle Component & CrossKart Stage CAD events
   panel.querySelector('#v3-cad-gen-engine')?.addEventListener('click', () => buildEngineBlockCAD(engine));
   panel.querySelector('#v3-cad-gen-suspension')?.addEventListener('click', () => buildSuspensionCAD(engine));
   panel.querySelector('#v3-cad-gen-brakes')?.addEventListener('click', () => buildBrakeCAD(engine));
@@ -4316,7 +4316,7 @@ function installWorkspaceUI(engine) {
   panel.querySelector('#v3-cad-gen-fuselage')?.addEventListener('click', () => buildFuselageCAD(engine));
   panel.querySelector('#v3-cad-gen-full-car')?.addEventListener('click', () => buildFullVehicleCAD(engine));
 
-  panel.querySelector('#v3-cad-buggy-stage')?.addEventListener('change', (e) => {
+  panel.querySelector('#v3-cad-crosskart-stage')?.addEventListener('change', (e) => {
     const info = getStageDescription(e.target.value);
     const infoBox = panel.querySelector('#v3-cad-stage-info');
     if (infoBox) {
@@ -4325,16 +4325,16 @@ function installWorkspaceUI(engine) {
   });
 
   panel.querySelector('#v3-cad-build-stage')?.addEventListener('click', () => {
-    const stageNum = panel.querySelector('#v3-cad-buggy-stage')?.value || '1';
-    buildBuggyStageCAD(engine, stageNum);
+    const stageNum = panel.querySelector('#v3-cad-crosskart-stage')?.value || '1';
+    buildCrosskartStageCAD(engine, stageNum);
   });
 
-  panel.querySelector('#v3-cad-build-buggy-full')?.addEventListener('click', () => {
-    buildFullBuggyFX1000(engine);
+  panel.querySelector('#v3-cad-build-crosskart-full')?.addEventListener('click', () => {
+    buildFullCrosskart(engine);
   });
 
   panel.querySelector('#v3-cad-export-bom')?.addEventListener('click', () => {
-    exportBuggyBOM(engine);
+    exportCrosskartBOM(engine);
   });
 
   panel.querySelector('#v3-cad-toggle-timeline')?.addEventListener('click', () => {

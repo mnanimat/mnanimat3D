@@ -1,4 +1,4 @@
-# MNAnimat3D
+# MNAnimat3D v2.1
 
 Editor de modelagem, montagem de cenário, rig e animação 3D para Windows e Android.
 
