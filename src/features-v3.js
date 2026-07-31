@@ -2522,7 +2522,7 @@ function installWorkspaceUI(engine) {
   panel.innerHTML = `<header><strong>MNAnimat3D Studio <em class="v32-version">v${VERSION}</em></strong><button id="v3-close-panel" aria-label="Fechar painel">×</button></header><div class="v3-pages">${workspaceHTML()}</div>`;
   document.body.append(panel);
   state.panel = panel;
-  const requiredWorkspacePages = ['scene','model','cad','validation','sculpt','animation','materials','camera','characters','editor','vector-bitmap','downloads'];
+  const requiredWorkspacePages = ['scene','model','sculpt','animation','materials','camera','characters','editor','vector-bitmap','downloads'];
   const missingWorkspacePages = requiredWorkspacePages.filter(page => (
     !bar.querySelector(`[data-v3-workspace="${page}"]`)
     || !panel.querySelector(`[data-v3-page="${page}"]`)

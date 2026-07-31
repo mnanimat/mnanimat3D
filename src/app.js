@@ -20,8 +20,8 @@ let snap = false;
 let busy = false;
 let furnitureCatalog = [];
 
-const primitiveLabels = { box: 'Cubo', sphere: 'Esfera', cylinder: 'Cilindro', plane: 'Plano', cone: 'Cone', torus: 'Toro' };
-const geometryFieldLabels = { width: 'Largura', height: 'Altura', depth: 'Profundidade', radius: 'Raio', tube: 'Espessura', segments: 'Segmentos' };
+const primitiveLabels = { box: 'Cubo', sphere: 'Esfera', cylinder: 'Cilindro', plane: 'Plano', cone: 'Cone', torus: 'Toro', line: 'Reta', arc: 'Arco', ring: 'Anel', capsule: 'Cápsula', pyramid: 'Pirâmide', tube: 'Tubo' };
+const geometryFieldLabels = { width: 'Largura', height: 'Altura', depth: 'Profundidade', radius: 'Raio', tube: 'Espessura', segments: 'Segmentos', innerRadius: 'Raio Int.', outerRadius: 'Raio Ext.' };
 
 function toast(message, error = false) {
   const element = document.createElement('div');
@@ -69,7 +69,10 @@ function addPrimitive(type) {
   toast(`${primitiveLabels[type]} adicionado à cena.`);
 }
 
-$$('[data-add]').forEach(button => button.addEventListener('click', () => addPrimitive(button.dataset.add)));
+document.addEventListener('click', event => {
+  const btn = event.target.closest('[data-add]');
+  if (btn) addPrimitive(btn.dataset.add);
+});
 $$('[data-tool]').forEach(button => button.addEventListener('click', () => setTool(button.dataset.tool)));
 
 $('#space-toggle')?.addEventListener('click', () => {

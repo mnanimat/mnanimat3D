@@ -283,6 +283,12 @@ export class MNAnimat3DEngine extends EventTarget {
       case 'plane': return new THREE.PlaneGeometry(params.width ?? 3, params.depth ?? 3, params.segments ?? 1, params.segments ?? 1);
       case 'cone': return new THREE.ConeGeometry(params.radius ?? 1, params.height ?? 2, params.segments ?? 32);
       case 'torus': return new THREE.TorusGeometry(params.radius ?? 1, params.tube ?? 0.32, 16, params.segments ?? 48);
+      case 'line': return new THREE.CylinderGeometry(params.radius ?? 0.04, params.radius ?? 0.04, params.height ?? 3, 16);
+      case 'arc': return new THREE.TorusGeometry(params.radius ?? 1.2, params.tube ?? 0.08, 16, params.segments ?? 32, Math.PI);
+      case 'ring': return new THREE.RingGeometry(params.innerRadius ?? 0.6, params.outerRadius ?? 1.2, params.segments ?? 32);
+      case 'capsule': return new THREE.CapsuleGeometry(params.radius ?? 0.5, params.height ?? 1.2, 8, params.segments ?? 16);
+      case 'pyramid': return new THREE.ConeGeometry(params.radius ?? 1, params.height ?? 1.5, 4);
+      case 'tube': return new THREE.CylinderGeometry(params.radius ?? 0.8, params.radius ?? 0.8, params.height ?? 2, params.segments ?? 32, 1, true);
       default: return new THREE.BoxGeometry(1, 1, 1);
     }
   }
@@ -294,17 +300,26 @@ export class MNAnimat3DEngine extends EventTarget {
     if (type === 'cylinder' || type === 'cone') return { radius: type === 'cylinder' ? 0.8 : 1, height: 2, ...common };
     if (type === 'plane') return { width: 3, depth: 3, ...common };
     if (type === 'torus') return { radius: 1, tube: 0.32, segments: 48 };
+    if (type === 'line') return { radius: 0.04, height: 3, segments: 16 };
+    if (type === 'arc') return { radius: 1.2, tube: 0.08, segments: 32 };
+    if (type === 'ring') return { innerRadius: 0.6, outerRadius: 1.2, segments: 32 };
+    if (type === 'capsule') return { radius: 0.5, height: 1.2, segments: 16 };
+    if (type === 'pyramid') return { radius: 1, height: 1.5, segments: 4 };
+    if (type === 'tube') return { radius: 0.8, height: 2, segments: 32 };
     return common;
   }
 
   addPrimitive(type) {
-    const labels = { box: 'Cubo', sphere: 'Esfera', cylinder: 'Cilindro', plane: 'Plano', cone: 'Cone', torus: 'Toro' };
+    const labels = {
+      box: 'Cubo', sphere: 'Esfera', cylinder: 'Cilindro', plane: 'Plano', cone: 'Cone', torus: 'Toro',
+      line: 'Reta', arc: 'Arco', ring: 'Anel', capsule: 'Cápsula', pyramid: 'Pirâmide', tube: 'Tubo'
+    };
     const params = this.primitiveDefaults(type);
     const mesh = new THREE.Mesh(this.createGeometry(type, params), this.makeMaterial());
     mesh.name = this.uniqueName(labels[type] || 'Objeto');
-    mesh.position.set((this.objectCounter % 3 - 1) * 0.3, type === 'plane' ? 0.01 : 1, 0);
-    if (type === 'plane') mesh.rotation.x = -Math.PI / 2;
-    mesh.castShadow = type !== 'plane';
+    mesh.position.set((this.objectCounter % 3 - 1) * 0.3, (type === 'plane' || type === 'ring') ? 0.01 : 1, 0);
+    if (type === 'plane' || type === 'ring') mesh.rotation.x = -Math.PI / 2;
+    mesh.castShadow = type !== 'plane' && type !== 'ring';
     mesh.receiveShadow = true;
     mesh.userData.editable = true;
     mesh.userData.primitive = { type, params };
