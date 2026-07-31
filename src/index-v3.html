@@ -151,22 +151,6 @@
         <!-- FLOATING OVERLAY FOR 3D MEASUREMENTS & ANGLES -->
         <div id="v3-3d-measurements-overlay" style="position:absolute;inset:0;pointer-events:none;z-index:22;overflow:hidden;"></div>
 
-        <!-- FLOATING CAD GEOMETRIC CONSTRAINT & OPERATIONAL TOOLBAR (CAD SPECIFIC) -->
-        <div id="v3-cad-floating-constraints" class="floating-panel cad-floating-toolbar" style="display:none;position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:25;background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);border:1px solid #0284c7;border-radius:30px;padding:5px 14px;box-shadow:0 10px 30px rgba(0,0,0,0.6);align-items:center;gap:6px;">
-          <span style="font-size:10px;font-weight:700;color:#38bdf8;padding-right:6px;border-right:1px solid #1e293b;white-space:nowrap;">📐 RESTRIÇÕES:</span>
-          <button class="tool-button" data-v3-constraint="coincident" title="Coincidente: Alinha pontos/vértices"><span style="font-size:11px;">🔗</span> Coincidente</button>
-          <button class="tool-button" data-v3-constraint="parallel" title="Paralelo: Mantém linhas paralelas"><span style="font-size:11px;">║║</span> Paralelo</button>
-          <button class="tool-button" data-v3-constraint="perpendicular" title="Perpendicular: Ângulo reto 90°"><span style="font-size:11px;">⟂</span> Perpendicular</button>
-          <button class="tool-button" data-v3-constraint="tangent" title="Tangente: Suaviza concordância entre arco e linha"><span style="font-size:11px;">⭕</span> Tangente</button>
-          <button class="tool-button" data-v3-constraint="concentric" title="Concêntrico: Mescla centros de círculos/arcos"><span style="font-size:11px;">◎</span> Concêntrico</button>
-          <span style="height:16px;width:1px;background:#334155;margin:0 4px;"></span>
-          <button class="tool-button" id="v3-cad-undo-btn" title="Desfazer no CAD (Ctrl+Z)" style="font-size:10px;padding:3px 8px;background:#1e293b;color:#cbd5e1;border-radius:12px;display:inline-flex;align-items:center;gap:4px;">↩️ Desfazer</button>
-          <button class="tool-button" id="v3-cad-redo-btn" title="Refazer no CAD (Ctrl+Y)" style="font-size:10px;padding:3px 8px;background:#1e293b;color:#cbd5e1;border-radius:12px;display:inline-flex;align-items:center;gap:4px;">↪️ Refazer</button>
-          <span style="height:16px;width:1px;background:#334155;margin:0 4px;"></span>
-          <button class="tool-button" id="v3-cad-toggle-measures-btn" title="Exibir / Ocultar Medidas de Comprimento em 3D" style="font-size:10px;padding:3px 8px;background:#0284c7;color:#fff;border-radius:12px;">📏 Ver Medidas</button>
-          <button class="tool-button" id="v3-cad-toggle-angles-btn" title="Exibir / Ocultar Ângulos em 3D" style="font-size:10px;padding:3px 8px;background:#0284c7;color:#fff;border-radius:12px;">📐 Ver Ângulos</button>
-        </div>
-
         <!-- FLOATING SELECTED COMPONENT POSITIONING & MOVING TOOLBAR -->
         <div id="v3-selected-obj-floating-bar" class="floating-panel" style="display:none;position:absolute;bottom:58px;left:50%;transform:translateX(-50%);z-index:25;background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);border:1px solid #38bdf8;border-radius:30px;padding:5px 14px;box-shadow:0 10px 30px rgba(0,0,0,0.6);align-items:center;gap:8px;">
           <span id="v3-selected-obj-name" style="font-size:11px;font-weight:700;color:#38bdf8;padding-right:8px;border-right:1px solid #334155;white-space:nowrap;">Objeto Selecionado</span>
@@ -378,10 +362,7 @@
         <div style="background:#0f172a;padding:12px;border-radius:10px;border:1px solid #1e293b;">
           <h4 style="margin:0 0 8px;font-size:12px;color:#7dd3fc;">📐 Modo de Layout</h4>
           <label style="display:block;font-size:11px;margin-bottom:6px;color:#cbd5e1;">
-            <input type="radio" name="layout-mode" value="full" checked /> ⚡ Completo Studio 3D & CAD (Todos os painéis)
-          </label>
-          <label style="display:block;font-size:11px;margin-bottom:6px;color:#cbd5e1;">
-            <input type="radio" name="layout-mode" value="cad" /> 📐 Foco em CAD & Engenharia (Esboço e Validação)
+            <input type="radio" name="layout-mode" value="full" checked /> ⚡ Completo Studio 3D (Todos os painéis)
           </label>
           <label style="display:block;font-size:11px;color:#cbd5e1;">
             <input type="radio" name="layout-mode" value="compact" /> 🎨 Minimalista / Foco no Viewport 3D
@@ -408,7 +389,7 @@
           <label><input type="checkbox" id="ui-chk-left" checked /> Painel Criar & Assets (Esquerda)</label>
           <label><input type="checkbox" id="ui-chk-timeline" checked /> Linha do Tempo / Animação (Inferior)</label>
           <label><input type="checkbox" id="ui-chk-inspector" checked /> Inspetor de Propriedades (Direita)</label>
-          <label><input type="checkbox" id="ui-chk-cadbar" checked /> Barra Superior de Áreas CAD / Validação</label>
+          <label><input type="checkbox" id="ui-chk-cadbar" checked /> Barra Superior de Áreas de Trabalho</label>
           <label><input type="checkbox" id="ui-chk-floatbar" checked /> Barra Flutuante de Seleção / Cota</label>
           <label><input type="checkbox" id="ui-chk-mobile" checked /> Dock de Navegação Mobile & Touch</label>
         </div>

@@ -19,8 +19,6 @@ const PAGE_DEFINITIONS = [
   ['materials', 'Materiais e Luz'],
   ['camera', 'Câmeras'],
   ['characters', 'Personagens'],
-  ['cad', 'CAD'],
-  ['validation', 'Validação'],
   ['editor', 'Edição'],
   ['vector-bitmap', 'Vetor & Bitmap'],
   ['downloads', 'Baixar App']

@@ -6,8 +6,6 @@ const REQUIRED_PAGES = [
   ['materials', 'Materiais e Luz'],
   ['camera', 'Câmeras'],
   ['characters', 'Personagens'],
-  ['cad', 'CAD'],
-  ['validation', 'Validação'],
   ['editor', 'Edição'],
   ['vector-bitmap', 'Vetor & Bitmap'],
   ['downloads', 'Baixar App']
