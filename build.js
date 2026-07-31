@@ -46,6 +46,7 @@ const itemsToCopy = [
   'LICENSE',
   'README.md',
   'THIRD_PARTY_NOTICES.md',
+  'manifest.webmanifest',
   'src',
   'assets',
   'lib'
