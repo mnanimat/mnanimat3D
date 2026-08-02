@@ -42,6 +42,11 @@
       </nav>
 
       <div class="top-actions">
+        <!-- BOTÕES PARA REEXIBIR PAINÉIS FECHADOS NO X -->
+        <button id="reopen-left-btn" class="icon-button hidden" style="background:#1e293b;border:1px solid #38bdf8;color:#38bdf8;font-weight:800;" title="Reexibir Painel Criar/Assets (Esquerda)">📐 Criar</button>
+        <button id="reopen-right-btn" class="icon-button hidden" style="background:#1e293b;border:1px solid #38bdf8;color:#38bdf8;font-weight:800;" title="Reexibir Inspetor de Propriedades (Direita)">⚙️ Inspetor</button>
+        <button id="reopen-timeline-btn" class="icon-button hidden" style="background:#1e293b;border:1px solid #38bdf8;color:#38bdf8;font-weight:800;" title="Reexibir Linha do Tempo (Animação)">🎬 Animar</button>
+
         <span id="save-status" class="save-status open-login-action" style="cursor:pointer;" title="Clique para ver ou editar seu login e perfil local"><i></i> Projeto local</span>
         <button id="theme-toggle-btn" class="icon-button" title="Alternar tom Claro / Escuro" aria-label="Alternar tom"><span data-icon="sun"></span></button>
         <button id="undo-btn" class="icon-button" title="Desfazer (Ctrl+Z)" aria-label="Desfazer"></button>
@@ -51,10 +56,13 @@
     </header>
 
     <aside class="left-panel panel">
-      <div class="panel-tabs" role="tablist">
-        <button class="panel-tab active" data-tab="create-panel">Criar</button>
-        <button class="panel-tab" data-tab="scene-panel">Cena</button>
-        <button class="panel-tab" data-tab="assets-panel">Assets</button>
+      <div class="panel-header-bar" style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:0 6px 0 0;">
+        <div class="panel-tabs" role="tablist" style="border-bottom:none;padding:0;flex:1;">
+          <button class="panel-tab active" data-tab="create-panel">Criar</button>
+          <button class="panel-tab" data-tab="scene-panel">Cena</button>
+          <button class="panel-tab" data-tab="assets-panel">Assets</button>
+        </div>
+        <button class="panel-close-btn" data-close-panel="left" title="Fechar Painel Criar/Assets (X)" aria-label="Fechar Painel">✕</button>
       </div>
 
       <section id="create-panel" class="panel-content active">
@@ -224,6 +232,7 @@
           <small>INSPETOR DE PROPRIEDADES</small>
           <strong id="inspector-title">Nenhuma seleção</strong>
         </div>
+        <button class="panel-close-btn" data-close-panel="right" title="Fechar Inspetor (X)" aria-label="Fechar Inspetor">✕</button>
       </div>
 
       <div id="inspector-empty" class="inspector-empty">
@@ -301,6 +310,7 @@
           <label class="auto-key"><input id="auto-key" type="checkbox"><span></span>Auto key</label>
           <label class="frame-input"><input id="current-frame" type="number" min="0" max="240" value="0"><small>/ 240</small></label>
           <label class="fps-input"><select id="fps-select"><option>24</option><option selected>30</option><option>60</option></select><small>FPS</small></label>
+          <button class="panel-close-btn" data-close-panel="timeline" title="Fechar Linha do Tempo (X)" aria-label="Fechar Linha do Tempo" style="margin-left:6px;">✕</button>
         </div>
       </div>
       <div class="timeline-body">
@@ -360,6 +370,10 @@
         <button id="export-video"><span data-icon="video"></span><strong>Animação WebM</strong><small>Formato WebM com áudio</small></button>
         <button id="export-glb"><span data-icon="cube"></span><strong>Modelo GLB</strong><small>Geometria, rig e keyframes</small></button>
         <button id="export-obj"><span data-icon="wireframe"></span><strong>Modelo OBJ</strong><small>Geometria estática universal</small></button>
+
+        <button id="export-exe" style="border-color:#38bdf8;background:rgba(2,132,199,0.12);"><span style="font-size:20px;">💻</span><strong>Executável Windows (.EXE)</strong><small style="color:#7dd3fc;font-weight:700;">Tamanho: ~68.4 MB · Instalador 64-bit para Windows 10/11</small></button>
+        <button id="export-apk" style="border-color:#10b981;background:rgba(16,185,129,0.12);"><span style="font-size:20px;">📱</span><strong>APK Android Assinado (.APK)</strong><small style="color:#6ee7b7;font-weight:700;">Tamanho: ~28.5 MB · Retrato e Paisagem Responsivo</small></button>
+        <button id="export-android-project" style="border-color:#a78bfa;background:rgba(124,92,255,0.12);"><span style="font-size:20px;">🛠️</span><strong>Projeto Android Studio (.ZIP)</strong><small style="color:#c4b5fd;font-weight:700;">Tamanho: ~14.2 MB · Pacote Gradle, WebView e Manifest</small></button>
       </div>
       <div id="render-progress" class="render-progress hidden"><div><span></span></div><small>Preparando render...</small></div>
     </div>

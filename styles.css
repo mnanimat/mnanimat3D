@@ -19,6 +19,129 @@
 :root[data-theme="light"] .export-grid button:hover{background:#f1f5f9;border-color:var(--violet)}
 :root[data-theme="light"] .render-resolution select{background:#f1f5f9;color:#0f172a;border:1px solid #cbd5e1}
 *{box-sizing:border-box}html,body,#app{width:100%;height:100%;margin:0;overflow:hidden}body{background:var(--bg);color:var(--text);font-size:12px}button,input,select{font:inherit}button{color:inherit}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--violet-2);outline-offset:2px}svg{display:block;fill:currentColor}.stroke{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.glyph-icon{display:inline-grid;place-items:center;width:1.35em;height:1.35em;line-height:1;font-family:"Segoe UI Symbol","Segoe UI",sans-serif;font-weight:700}
+
+/* Close buttons and resizable floating window styles */
+.panel-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #94a3b8;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.panel-close-btn:hover {
+  background: #ef4444;
+  border-color: #f87171;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.left-panel {
+  resize: horizontal;
+  overflow: hidden;
+  min-width: 180px;
+  max-width: 500px;
+}
+.right-panel {
+  resize: horizontal;
+  overflow-y: auto;
+  min-width: 200px;
+  max-width: 550px;
+}
+.timeline-panel {
+  resize: vertical;
+  overflow: hidden;
+  min-height: 120px;
+  max-height: 480px;
+}
+
+.left-panel.panel-closed,
+.right-panel.panel-closed,
+.timeline-panel.panel-closed {
+  display: none !important;
+}
+
+.app-shell.hide-left {
+  grid-template-columns: 0px 1fr var(--panel-right) !important;
+}
+.app-shell.hide-right {
+  grid-template-columns: var(--panel-left) 1fr 0px !important;
+}
+.app-shell.hide-left.hide-right {
+  grid-template-columns: 0px 1fr 0px !important;
+}
+.app-shell.hide-timeline {
+  grid-template-rows: var(--topbar) minmax(0, 1fr) 0px !important;
+}
+
+/* Modal and Sub-window Floating and Resizability */
+.modal-card {
+  resize: both;
+  overflow: auto;
+  min-width: 320px;
+  min-height: 220px;
+  max-width: 95vw;
+  max-height: 90vh;
+}
+
+/* Mobile Landscape Responsiveness (Modo Paisagem) */
+@media (max-height: 520px) and (orientation: landscape) {
+  :root {
+    --topbar: 42px;
+    --timeline: 0px;
+  }
+  .app-shell {
+    grid-template-rows: 42px 1fr 44px !important;
+  }
+  .topbar {
+    height: 42px;
+    padding: 0 8px;
+  }
+  .brand-copy small {
+    display: none !important;
+  }
+  .brand-logo {
+    width: 26px;
+    height: 26px;
+  }
+  .mobile-dock {
+    height: 44px;
+    padding-bottom: 0 !important;
+  }
+  .mobile-dock button {
+    min-width: 44px;
+    gap: 1px;
+  }
+  .mobile-dock svg {
+    width: 16px;
+    height: 16px;
+  }
+  .left-panel, .right-panel, .timeline-panel {
+    height: min(88vh, 320px) !important;
+    max-height: 88vh !important;
+    bottom: 48px !important;
+  }
+  #v3-view-cube-wrapper {
+    top: 48px !important;
+    right: 10px !important;
+    width: 70px !important;
+    height: 70px !important;
+  }
+  .view-toolbar {
+    top: 48px !important;
+  }
+  .viewport-toolbar {
+    top: 48px !important;
+  }
+}
 .app-shell{display:grid;grid-template-columns:var(--panel-left) 1fr var(--panel-right);grid-template-rows:var(--topbar) minmax(0,1fr) var(--timeline);grid-template-areas:"top top top" "left workspace right" "timeline timeline timeline";background:var(--bg)}
 .panel{background:rgba(15,18,32,.98);border-color:var(--line-soft)}.topbar{grid-area:top;display:flex;align-items:center;border-bottom:1px solid var(--line);background:#0d101c;padding:0 12px;z-index:20}.brand{width:258px;display:flex;align-items:center;gap:9px}.brand-logo{width:32px;height:32px;object-fit:contain;border-radius:8px;box-shadow:0 0 16px rgba(56,189,248,.35);transition:transform .2s ease,box-shadow .2s ease}.brand-logo:hover{transform:scale(1.05);box-shadow:0 0 22px rgba(56,189,248,.55)}.brand-copy{display:flex;align-items:baseline;gap:7px}.brand-copy strong{font-size:14px}.brand-copy small{font-size:8px;letter-spacing:1.3px;color:var(--muted);font-weight:700}.main-menu{display:flex;align-items:center;height:100%;gap:2px}.menu-button{height:32px;border:0;background:transparent;color:#aeb3c8;padding:0 11px;border-radius:7px;cursor:pointer}.menu-button:hover,.menu-button.active{background:var(--surface-3);color:#fff}.top-actions{margin-left:auto;display:flex;align-items:center;gap:7px}.save-status{display:flex;align-items:center;gap:7px;color:var(--muted);margin-right:4px}.save-status i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}.icon-button,.tool-button,.transport-btn{border:0;background:transparent;display:grid;place-items:center;cursor:pointer;color:#aeb3c8}.icon-button{width:32px;height:32px;border-radius:8px}.icon-button:hover,.tool-button:hover,.transport-btn:hover{color:#fff;background:var(--surface-3)}.primary-button,.secondary-button{border:0;border-radius:8px;min-height:34px;padding:0 14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary-button{background:linear-gradient(135deg,var(--violet-2),var(--violet));color:white;box-shadow:0 8px 22px rgba(92,61,255,.25)}.primary-button:hover{filter:brightness(1.08)}.secondary-button{background:#20263d;border:1px solid #343b58;color:#e5e7f6}.button-icon svg{width:16px}.left-panel{grid-area:left;border-right:1px solid var(--line);min-height:0;overflow:hidden}.right-panel{grid-area:right;border-left:1px solid var(--line);min-height:0;overflow-y:auto}.panel-tabs{height:43px;border-bottom:1px solid var(--line);display:flex;padding:0 10px;gap:5px}.panel-tab{border:0;border-bottom:2px solid transparent;background:none;color:#cbd5e1;padding:0 12px;cursor:pointer;font-weight:600;transition:color 0.15s ease}.panel-tab:hover{color:#ffffff}.panel-tab.active{color:#ffffff;border-color:var(--violet-2);font-weight:700}:root[data-theme="light"] .panel-tab,body.light-theme .panel-tab{color:#334155}:root[data-theme="light"] .panel-tab:hover,body.light-theme .panel-tab:hover{color:#0f172a}:root[data-theme="light"] .panel-tab.active,body.light-theme .panel-tab.active{color:#0284c7;border-color:#0284c7;font-weight:700}
 div#app:nth-of-type(1) > aside:nth-of-type(1) > div:nth-of-type(1) > button{color:#f8fafc!important;font-weight:700;font-size:12px}
