@@ -129,8 +129,8 @@ body.has-modal-overlay .mobile-dock {
 /* 3D Viewport CAD Navigation Cube (View Cube 3D) */
 #v3-view-cube-wrapper {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 68px;
+  right: 16px;
   width: 90px;
   height: 90px;
   z-index: 35;

@@ -184,7 +184,16 @@
           </div>
         </div>
 
-        <div class="view-toolbar floating-panel">
+        <div class="view-toolbar floating-panel" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;">
+          <button class="view-chip" data-view="iso" title="Visão Isométrica 3D"><span>🧊 Isométrico</span></button>
+          <button class="view-chip" data-view="perspective" title="Visão Perspectiva 3D"><span>👁️ Perspectiva</span></button>
+          <button class="view-chip" data-view="front" title="Visão Dianteira (Frente)"><span>⏹️ Frente</span></button>
+          <button class="view-chip" data-view="back" title="Visão Traseira (Costas)"><span>⏹️ Costas</span></button>
+          <button class="view-chip" data-view="left" title="Visão Lateral Esquerda"><span>◀️ Lat. Esq.</span></button>
+          <button class="view-chip" data-view="right" title="Visão Lateral Direita"><span>▶️ Lat. Dir.</span></button>
+          <button class="view-chip" data-view="top" title="Visão Superior (Topo)"><span>🔼 Topo</span></button>
+          <button class="view-chip" data-view="bottom" title="Visão Inferior (Baixo)"><span>🔽 Baixo</span></button>
+          <span class="toolbar-divider"></span>
           <button id="grid-toggle" class="view-chip active"><span data-icon="grid"></span>Grade</button>
           <button id="shading-toggle" class="view-chip"><span data-icon="sphere"></span>Material</button>
           <button id="focus-btn" class="view-chip"><span data-icon="focus"></span>Focar</button>
@@ -378,13 +387,10 @@
         <div style="background:#0f172a;padding:12px;border-radius:10px;border:1px solid #1e293b;">
           <h4 style="margin:0 0 8px;font-size:12px;color:#7dd3fc;">🎨 Tema & Visual</h4>
           <label style="display:block;font-size:11px;margin-bottom:6px;color:#cbd5e1;">
-            <input type="radio" name="theme-mode" value="dark" checked /> 🌙 Escuro Studio Luxo (Padrão GPU)
-          </label>
-          <label style="display:block;font-size:11px;margin-bottom:6px;color:#cbd5e1;">
-            <input type="radio" name="theme-mode" value="cad-light" /> ☀️ Técnico CAD Claro (Alta Visibilidade)
+            <input type="radio" name="theme-mode" value="dark" checked /> 🌙 Tom Escuro
           </label>
           <label style="display:block;font-size:11px;color:#cbd5e1;">
-            <input type="radio" name="theme-mode" value="high-contrast" /> 👁️ Alto Contraste para Engenharia
+            <input type="radio" name="theme-mode" value="cad-light" /> ☀️ Tom Claro
           </label>
         </div>
       </div>

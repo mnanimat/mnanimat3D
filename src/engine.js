@@ -160,7 +160,47 @@ export class MNAnimat3DEngine extends EventTarget {
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.resizeObserver.observe(container);
     this.resize();
+    this.createDefaultCube();
     this.animate();
+  }
+
+  createDefaultCube() {
+    let existingCube = null;
+    this.editorRoot.traverse(obj => {
+      if (obj.isMesh && obj.userData?.isDefaultCube) existingCube = obj;
+    });
+    if (existingCube) return existingCube;
+
+    const materials = [
+      new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.45, metalness: 0.1, name: 'Direita (+X)' }),
+      new THREE.MeshStandardMaterial({ color: 0xf97316, roughness: 0.45, metalness: 0.1, name: 'Esquerda (-X)' }),
+      new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.45, metalness: 0.1, name: 'Topo (+Y)' }),
+      new THREE.MeshStandardMaterial({ color: 0x8b5cf6, roughness: 0.45, metalness: 0.1, name: 'Baixo (-Y)' }),
+      new THREE.MeshStandardMaterial({ color: 0x0ea5e9, roughness: 0.45, metalness: 0.1, name: 'Frente (+Z)' }),
+      new THREE.MeshStandardMaterial({ color: 0xec4899, roughness: 0.45, metalness: 0.1, name: 'Costas (-Z)' })
+    ];
+
+    const geometry = new THREE.BoxGeometry(1.8, 1.8, 1.8);
+    const cube = new THREE.Mesh(geometry, materials);
+    cube.name = 'Cubo 3D (Vistas)';
+    cube.position.set(0, 0.9, 0);
+    cube.castShadow = true;
+    cube.receiveShadow = true;
+    cube.userData.editable = true;
+    cube.userData.isDefaultCube = true;
+    cube.userData.primitive = { type: 'box', params: { width: 1.8, height: 1.8, depth: 1.8 } };
+
+    const edges = new THREE.EdgesGeometry(geometry);
+    const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.65 });
+    const wireframeOverlay = new THREE.LineSegments(edges, lineMat);
+    wireframeOverlay.name = 'Arestas do Cubo';
+    cube.add(wireframeOverlay);
+
+    this.editorRoot.add(cube);
+    this.objectCounter += 1;
+    this.select(cube);
+    this.emit('scenechange');
+    return cube;
   }
 
   emit(type, detail = {}) { this.dispatchEvent(new CustomEvent(type, { detail })); }
@@ -326,6 +366,23 @@ export class MNAnimat3DEngine extends EventTarget {
     this.objectCounter += 1;
     this.editorRoot.add(mesh);
     this.select(mesh);
+
+    const parent = this.editorRoot;
+    this.pushHistory({
+      type: 'add',
+      object: mesh,
+      undo: () => {
+        if (mesh.parent) mesh.parent.remove(mesh);
+        if (this.selected === mesh) this.select(null);
+        this.emit('scenechange');
+      },
+      redo: () => {
+        parent.add(mesh);
+        this.select(mesh);
+        this.emit('scenechange');
+      }
+    });
+
     this.emit('scenechange');
     return mesh;
   }
@@ -533,20 +590,64 @@ export class MNAnimat3DEngine extends EventTarget {
 
   setView(view) {
     const target = this.orbit.target.clone();
-    const distance = Math.max(3, this.camera.position.distanceTo(target));
-    const directions = {
-      top: [0, 1, 0.0001],
-      bottom: [0, -1, 0.0001],
-      right: [1, 0.0001, 0],
-      left: [-1, 0.0001, 0],
-      front: [0, 0.0001, 1],
-      back: [0, 0.0001, -1],
-      iso: [1, 0.85, 1]
-    };
-    const dir = directions[view] || directions.iso;
-    this.camera.position.copy(target).add(new THREE.Vector3(...dir).normalize().multiplyScalar(distance));
-    this.camera.up.set(0, 1, 0);
+    const distance = Math.max(3.5, this.camera.position.distanceTo(target));
+    const v = String(view || '').toLowerCase();
+
+    let dir = new THREE.Vector3();
+    let up = new THREE.Vector3(0, 1, 0);
+
+    switch (v) {
+      case 'top':
+      case 'topo':
+        dir.set(0, distance, 0.0001);
+        up.set(0, 0, -1);
+        break;
+      case 'bottom':
+      case 'bot':
+      case 'baixo':
+        dir.set(0, -distance, 0.0001);
+        up.set(0, 0, 1);
+        break;
+      case 'right':
+      case 'direita':
+        dir.set(distance, 0, 0);
+        up.set(0, 1, 0);
+        break;
+      case 'left':
+      case 'esquerda':
+        dir.set(-distance, 0, 0);
+        up.set(0, 1, 0);
+        break;
+      case 'front':
+      case 'frente':
+        dir.set(0, 0, distance);
+        up.set(0, 1, 0);
+        break;
+      case 'back':
+      case 'costas':
+      case 'traseira':
+        dir.set(0, 0, -distance);
+        up.set(0, 1, 0);
+        break;
+      case 'perspective':
+      case 'perspectiva':
+      case 'persp':
+        dir.set(distance * 0.8, distance * 0.6, distance * 0.9);
+        up.set(0, 1, 0);
+        break;
+      case 'iso':
+      case 'isometric':
+      case 'isometrico':
+      default:
+        dir.set(distance * 0.707, distance * 0.707, distance * 0.707);
+        up.set(0, 1, 0);
+        break;
+    }
+
+    this.camera.up.copy(up);
+    this.camera.position.copy(target).add(dir);
     this.camera.lookAt(target);
+    this.orbit.target.copy(target);
     this.orbit.update();
     this.emit('camerachange');
   }
@@ -625,37 +726,97 @@ export class MNAnimat3DEngine extends EventTarget {
     this.emit('scenechange');
   }
 
-  pushHistory(object, before, after) {
-    this.undoStack.push({ object, before, after });
-    if (this.undoStack.length > 80) this.undoStack.shift();
+  pushHistory(command, beforeData, afterData) {
+    if (!command) return;
+
+    if (command.isObject3D || command.position) {
+      const object = command;
+      const before = beforeData;
+      const after = afterData;
+      this.undoStack.push({
+        type: 'transform',
+        object,
+        before,
+        after,
+        undo: () => {
+          if (object) {
+            applyState(object, before);
+            this.select(object);
+            this.emit('transformchange');
+            this.emit('scenechange');
+          }
+        },
+        redo: () => {
+          if (object) {
+            applyState(object, after);
+            this.select(object);
+            this.emit('transformchange');
+            this.emit('scenechange');
+          }
+        }
+      });
+    } else {
+      this.undoStack.push(command);
+    }
+
+    if (this.undoStack.length > 100) this.undoStack.shift();
     this.redoStack.length = 0;
     this.emit('historychange');
   }
 
   undo() {
     const command = this.undoStack.pop();
-    if (!command || !command.object.parent) return;
-    applyState(command.object, command.before);
-    this.redoStack.push(command);
-    this.select(command.object);
-    this.emit('transformchange'); this.emit('historychange');
+    if (!command) {
+      this.emit('notice', { message: 'Nenhuma ação para desfazer.', error: false });
+      return;
+    }
+    try {
+      if (typeof command.undo === 'function') {
+        command.undo();
+      } else if (command.object && command.before) {
+        applyState(command.object, command.before);
+        this.select(command.object);
+        this.emit('transformchange');
+      }
+      this.redoStack.push(command);
+      this.emit('historychange');
+      this.emit('scenechange');
+      this.emit('notice', { message: '↩️ Desfazer executado' });
+    } catch (err) {
+      console.warn('Erro ao desfazer:', err);
+    }
   }
 
   redo() {
     const command = this.redoStack.pop();
-    if (!command || !command.object.parent) return;
-    applyState(command.object, command.after);
-    this.undoStack.push(command);
-    this.select(command.object);
-    this.emit('transformchange'); this.emit('historychange');
+    if (!command) {
+      this.emit('notice', { message: 'Nenhuma ação para refazer.', error: false });
+      return;
+    }
+    try {
+      if (typeof command.redo === 'function') {
+        command.redo();
+      } else if (command.object && command.after) {
+        applyState(command.object, command.after);
+        this.select(command.object);
+        this.emit('transformchange');
+      }
+      this.undoStack.push(command);
+      this.emit('historychange');
+      this.emit('scenechange');
+      this.emit('notice', { message: '↪️ Refazer executado' });
+    } catch (err) {
+      console.warn('Erro ao refazer:', err);
+    }
   }
 
   duplicateSelected() {
     if (!this.selected) return null;
+    const parent = this.selected.parent || this.editorRoot;
     const clone = this.selected.clone(true);
     clone.name = this.uniqueName(this.selected.name);
     clone.position.x += 0.6;
-    this.selected.parent.add(clone);
+    parent.add(clone);
     clone.traverse(object => {
       if (object.isMesh) {
         object.geometry = object.geometry.clone();
@@ -663,6 +824,22 @@ export class MNAnimat3DEngine extends EventTarget {
       }
     });
     this.select(clone);
+
+    this.pushHistory({
+      type: 'add',
+      object: clone,
+      undo: () => {
+        if (clone.parent) clone.parent.remove(clone);
+        if (this.selected === clone) this.select(null);
+        this.emit('scenechange');
+      },
+      redo: () => {
+        parent.add(clone);
+        this.select(clone);
+        this.emit('scenechange');
+      }
+    });
+
     this.emit('scenechange');
     return clone;
   }
@@ -671,6 +848,7 @@ export class MNAnimat3DEngine extends EventTarget {
     if (!this.selected) return false;
     if (this.selected.userData.joint) { this.emit('notice', { message: 'Uma articulação faz parte do rig e não pode ser removida.', error: true }); return false; }
     const object = this.selected;
+    const parent = object.parent || this.editorRoot;
     this.select(null);
     const helper = this.characterHelpers.get(object.uuid);
     if (helper) {
@@ -679,13 +857,23 @@ export class MNAnimat3DEngine extends EventTarget {
       helper.material?.dispose?.();
       this.characterHelpers.delete(object.uuid);
     }
-    object.parent?.remove(object);
-    object.traverse(child => {
-      child.geometry?.dispose?.();
-      if (Array.isArray(child.material)) child.material.forEach(material => material.dispose?.()); else child.material?.dispose?.();
+    if (parent) parent.remove(object);
+
+    this.pushHistory({
+      type: 'remove',
+      object,
+      undo: () => {
+        if (parent) parent.add(object);
+        this.select(object);
+        this.emit('scenechange');
+      },
+      redo: () => {
+        if (object.parent) object.parent.remove(object);
+        if (this.selected === object) this.select(null);
+        this.emit('scenechange');
+      }
     });
-    this.animationData.delete(object.uuid);
-    this.importedAnimations = this.importedAnimations.filter(item => item.root !== object);
+
     this.emit('scenechange');
     return true;
   }

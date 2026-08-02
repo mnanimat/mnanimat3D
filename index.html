@@ -177,8 +177,33 @@
         <button id="snap-toggle" class="view-chip" title="Ajuste à Grade (Snap)"><span data-icon="grid"></span><span>Snap</span></button>
       </nav>
 
-      <div class="floating-panel view-toolbar">
-        <button id="camera-reset" class="view-chip" title="Resetar Câmera"><span data-icon="home"></span><span>Reset</span></button>
+      <!-- 3D NAVIGATION VIEW CUBE (CUBO DE NAVEGAÇÃO CAD 3D) -->
+      <div id="v3-view-cube-wrapper" title="Cubo de Navegação CAD 3D: Clique em uma face para alinhar a visão">
+        <div id="v3-view-cube" class="v3-view-cube-container">
+          <div class="v3-cube-face top" data-view="top">TOP</div>
+          <div class="v3-cube-face bottom" data-view="bottom">BOT</div>
+          <div class="v3-cube-face front" data-view="front">FRONT</div>
+          <div class="v3-cube-face back" data-view="back">BACK</div>
+          <div class="v3-cube-face right" data-view="right">RIGHT</div>
+          <div class="v3-cube-face left" data-view="left">LEFT</div>
+        </div>
+        <div class="v3-cube-controls">
+          <button class="v3-cube-btn" data-view="iso" title="Visão Isométrica 3D">ISO</button>
+          <button class="v3-cube-btn" id="v3-cube-reset" title="Resetar Câmera">RESET</button>
+        </div>
+      </div>
+
+      <div class="floating-panel view-toolbar" style="display:flex;gap:4px;align-items:center;flex-wrap:wrap;">
+        <button class="view-chip" data-view="iso" title="Visão Isométrica 3D"><span>🧊 Isométrico</span></button>
+        <button class="view-chip" data-view="perspective" title="Visão Perspectiva 3D"><span>👁️ Perspectiva</span></button>
+        <button class="view-chip" data-view="front" title="Visão Dianteira (Frente)"><span>⏹️ Frente</span></button>
+        <button class="view-chip" data-view="back" title="Visão Traseira (Costas)"><span>⏹️ Costas</span></button>
+        <button class="view-chip" data-view="left" title="Visão Lateral Esquerda"><span>◀️ Lat. Esq.</span></button>
+        <button class="view-chip" data-view="right" title="Visão Lateral Direita"><span>▶️ Lat. Dir.</span></button>
+        <button class="view-chip" data-view="top" title="Visão Superior (Topo)"><span>🔼 Topo</span></button>
+        <button class="view-chip" data-view="bottom" title="Visão Inferior (Baixo)"><span>🔽 Baixo</span></button>
+        <span class="toolbar-divider"></span>
+        <button id="camera-reset" class="view-chip" data-view="iso" title="Resetar Câmera"><span data-icon="home"></span><span>Reset</span></button>
         <button id="shading-toggle" class="view-chip" title="Modo de Sombreamento"><span data-icon="sun"></span><span id="shading-label">Sombreado</span></button>
       </div>
 
@@ -370,13 +395,10 @@
         <div style="background:#0f172a;padding:12px;border-radius:10px;border:1px solid #1e293b;">
           <h4 style="margin:0 0 8px;font-size:12px;color:#7dd3fc;">🎨 Tema & Visual</h4>
           <label style="display:block;font-size:11px;margin-bottom:6px;color:#cbd5e1;">
-            <input type="radio" name="theme-mode" value="dark" checked /> 🌙 Escuro Studio Luxo (Padrão GPU)
-          </label>
-          <label style="display:block;font-size:11px;margin-bottom:6px;color:#cbd5e1;">
-            <input type="radio" name="theme-mode" value="cad-light" /> ☀️ Técnico CAD Claro (Alta Visibilidade)
+            <input type="radio" name="theme-mode" value="dark" checked /> 🌙 Tom Escuro
           </label>
           <label style="display:block;font-size:11px;color:#cbd5e1;">
-            <input type="radio" name="theme-mode" value="high-contrast" /> 👁️ Alto Contraste para Engenharia
+            <input type="radio" name="theme-mode" value="cad-light" /> ☀️ Tom Claro
           </label>
         </div>
       </div>

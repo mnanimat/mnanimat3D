@@ -130,7 +130,21 @@ $('#toggle-leftpanel-btn')?.addEventListener('click', (e) => {
   window.dispatchEvent(new Event('resize'));
   toast(isHidden ? 'Painel Esquerdo ocultado.' : 'Painel Esquerdo exibido.');
 });
-$$('[data-view]').forEach(button => button.addEventListener('click', () => engine.setView(button.dataset.view)));
+$$('[data-view]').forEach(button => button.addEventListener('click', () => {
+  const view = button.dataset.view;
+  engine.setView(view);
+  const names = {
+    iso: 'Isométrica',
+    perspective: 'Perspectiva',
+    front: 'Frente',
+    back: 'Costas',
+    left: 'Lateral Esquerda',
+    right: 'Lateral Direita',
+    top: 'Topo',
+    bottom: 'Baixo'
+  };
+  toast(`Visão da Câmera: ${names[view] || view}`);
+}));
 
 // 3D View Navigation Cube Synchronizer
 function updateViewCube() {
@@ -726,11 +740,16 @@ document.addEventListener('pointerdown', event => { if (!event.target.closest('.
 function handleShortcut(event) {
   if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
   const key = event.key.toLowerCase();
-  if (event.ctrlKey && key === 'z') { event.preventDefault(); engine.undo(); }
-  else if (event.ctrlKey && key === 'y') { event.preventDefault(); engine.redo(); }
-  else if (event.ctrlKey && key === 'd') { event.preventDefault(); engine.duplicateSelected(); }
-  else if (event.ctrlKey && key === 'o') { event.preventDefault(); $('#project-input').click(); }
-  else if (event.ctrlKey && key === 'p') { event.preventDefault(); showRenderModal(); }
+  const isCmdOrCtrl = event.ctrlKey || event.metaKey;
+  if (isCmdOrCtrl && key === 'z') {
+    event.preventDefault();
+    if (event.shiftKey) engine.redo();
+    else engine.undo();
+  }
+  else if (isCmdOrCtrl && key === 'y') { event.preventDefault(); engine.redo(); }
+  else if (isCmdOrCtrl && key === 'd') { event.preventDefault(); engine.duplicateSelected(); }
+  else if (isCmdOrCtrl && key === 'o') { event.preventDefault(); $('#project-input').click(); }
+  else if (isCmdOrCtrl && key === 'p') { event.preventDefault(); showRenderModal(); }
   else if (key === 'q') setTool('select');
   else if (key === 'w') setTool('translate');
   else if (key === 'e') setTool('rotate');
