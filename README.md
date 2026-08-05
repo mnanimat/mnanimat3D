@@ -1,10 +1,9 @@
-# MNAnimat3D v2.1
+# MNAnimat3D v1.0.0
 
 Editor de modelagem, montagem de cenário, rig e animação 3D para Windows e Android.
 
 ## Alterações desta versão
 
-- Rain e Snow foram removidas da interface, do instalador Windows, do APK e da pasta de assets.
 - A personagem blocada do pacote Kenney Blocky Characters permanece incluída sob CC0.
 - Novo cartão **Importar personagem FBX**, com suporte a:
   - armatures e ossos;
